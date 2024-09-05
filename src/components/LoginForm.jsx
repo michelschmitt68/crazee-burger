@@ -1,6 +1,5 @@
-import { useState } from "react";
+export default function LoginForm() {
 
-export default function Login() {
     const [valueInput, setValueInput] = useState("");
 
     const handleChange = (e) => {
@@ -16,8 +15,10 @@ export default function Login() {
         setValueInput("");
     };
 
-    return (
+    
+    return(
         <>
+
             <p>Bienvenue chez nous</p>
             <p>Connectez-vous</p>
             <input
@@ -30,5 +31,5 @@ export default function Login() {
                 Accéder à votre espace
             </button>
         </>
-    );
+    )
 }
