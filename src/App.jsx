@@ -1,12 +1,14 @@
 
 import './App.css'
+import Login from './pages/Login'
 
 function App() {
 
 
   return (
     <>
-      <p>Salutt</p>
+    <p>aaa</p>
+      <Login />
     </>
   )
 }
