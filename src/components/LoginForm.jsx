@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function LoginForm() {
 
     const [valueInput, setValueInput] = useState("");
@@ -6,30 +8,30 @@ export default function LoginForm() {
         setValueInput(e.target.value); 
     };
 
-    const handleClick = () => {
-        if (valueInput.trim() === "") {
-            alert("Veuillez entrer votre prénom");
-            return;
-        }
+    const handleSubmit = (event) => {
+        event.preventDefault();
         alert("Bonjour " + valueInput);
         setValueInput("");
     };
-
     
     return(
-        <>
+        <div>
 
-            <p>Bienvenue chez nous</p>
-            <p>Connectez-vous</p>
-            <input
-                type="text"
-                placeholder="Entrez votre prénom..." 
-                value={valueInput} 
-                onChange={handleChange} 
-            />
-            <button onClick={handleClick}>
-                Accéder à votre espace
-            </button>
-        </>
+            <h1>Bienvenue chez nous</h1>
+            <br />
+            <h2>Connectez-vous</h2>
+            <form action="submit" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Entrez votre prénom..."
+                    required 
+                    value={valueInput} 
+                    onChange={handleChange} 
+                />
+                <button >
+                    Accéder à votre espace
+                </button>
+            </form>
+        </div>
     )
 }
