@@ -1,7 +1,7 @@
 
 import ErrorPage from './components/ErrorPage';
 import OrderPage from './components/OrderPage';
-import LoginPage from './pages/LoginPage'
+import LoginPage from './components/LoginPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
