@@ -1,4 +1,5 @@
 
+import ErrorPage from './components/ErrorPage';
 import OrderPage from './components/OrderPage';
 import LoginPage from './pages/LoginPage'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/order/:username" element={<OrderPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
     </BrowserRouter>
     </>
