@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
 export default function LoginForm() {
 
@@ -18,10 +19,10 @@ export default function LoginForm() {
     
     return(
 
-        <form action="submit" onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous !</h1>
-            <br />
-            <h2>Connectez-vous</h2>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+                <h1>Bienvenue chez nous !</h1>
+                <br />
+                <h2>Connectez-vous</h2>
             <input
                 type="text"
                 placeholder="Entrez votre prénom"
@@ -32,7 +33,12 @@ export default function LoginForm() {
             <button >
                 Accéder à votre espace
             </button>
-        </form>
+        </LoginFormStyled>
 
     )
 }
+
+
+const LoginFormStyled = styled.form`
+    
+`;
