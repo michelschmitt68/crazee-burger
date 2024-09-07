@@ -18,5 +18,10 @@ const LoginPageStyled = styled.div`
   
     height: 100vh;
     width: 100%;
-    background-color: red;
+    background-image: url(${backgroundImage});
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   `
