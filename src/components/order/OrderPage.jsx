@@ -1,4 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 const OrderPage = () => {
 
@@ -6,10 +8,13 @@ const OrderPage = () => {
     const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="container">
       <h1>Bonjour {username}</h1>
       <button   
         onClick={() => navigate(`/`)}>Déconnexion</button>
+    
+      <Navbar></Navbar>
+      <Main></Main>
     </div>
   )
 }
