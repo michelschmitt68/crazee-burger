@@ -2,7 +2,7 @@
 import ErrorPage from './components/error/ErrorPage';
 import OrderPage from './components/order/OrderPage';
 import LoginPage from './components/login/LoginPage';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
 
