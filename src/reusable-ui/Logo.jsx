@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import logoOrange from '../images/logo-orange.png';
 import {theme} from '../theme/index';
+import logoOrange from "../images/logo-orange.png";
 
 export default function Logo() {
   return (
     <LogoStyled>
-      <div>CRAZEE</div>
-      <div className='logo'></div>
-      <div>BURGER</div>
+      <h1>CRAZEE</h1>
+      <img src={logoOrange} alt="logo-orange"></img>
+      <h1>BURGER</h1>
     </LogoStyled>
   )
 }
@@ -16,23 +16,28 @@ export default function Logo() {
 
 const LogoStyled = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: 110px;
-  color: ${theme.colors.primary_burger};
-  font-family: 'Amatic SC', cursive;
-  font-weight: ${theme.weights.bold};
-  letter-spacing: 1.3px;
+  transform: scale(2.5);
 
-  .logo{
-    background-image: url(${logoOrange});
-    background-size: cover;
-    width: 200px;
-    height: 150px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
+  h1 {
+    display: inline;
+    text-align: center;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.P4};
+    line-height: 1em;
+    font-weight: ${theme.weights.bold};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
+    }
+
+    img{
+      object-fit: contain;
+      object-position: center;
+      height: 60px;
+      width: 80px; // for Safari and Firefox
+      margin: 0 5px;
+    }
 `;
 
 
