@@ -1,7 +1,7 @@
 
-import ErrorPage from './components/error/ErrorPage';
-import OrderPage from './components/order/OrderPage';
-import LoginPage from './components/login/LoginPage';
+import ErrorPage from './components/pages/error/ErrorPage';
+import OrderPage from './components/pages/order/OrderPage';
+import LoginPage from './components/pages/login/LoginPage';
 import { Routes, Route } from "react-router-dom";
 
 

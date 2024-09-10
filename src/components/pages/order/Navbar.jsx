@@ -1,21 +1,26 @@
 import styled from "styled-components";
-import Logo from "../../reusable-ui/Logo";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
+import UserInfo from "./UserInfo";
+import PropTypes from 'prop-types';
+import Logo from "../../reusableUI/Logo";
 
-export default function Navbar() {
+export default function Navbar({username}) {
   return (
     <NavbarStyled>
-        <Logo />            
-        <div >Élément de droite</div>
+        <Logo />         
+        <UserInfo username={username}/>
     </NavbarStyled>
   )
 }
+
+Navbar.PropTypes = {
+    username: PropTypes.string.isRequired
+};
 
 const NavbarStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background-color: gray;
     width: 100%;
     background-color: ${theme.colors.white};

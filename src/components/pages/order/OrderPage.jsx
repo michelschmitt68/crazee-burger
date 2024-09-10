@@ -1,12 +1,12 @@
-// import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
 
 const OrderPage = () => {
 
-    // const { username } = useParams();
+     const { username } = useParams();
     // const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ const OrderPage = () => {
       <button   
         onClick={() => navigate(`/`)}>Déconnexion</button> */}
     
-      <Navbar></Navbar>
+      <Navbar username={username}></Navbar>
       <Main></Main>
     </OrderPageStyled>
   )

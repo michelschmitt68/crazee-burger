@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {theme} from '../theme/index';
-import logoOrange from "../images/logo-orange.png";
+import {theme} from '../../theme/index';
+import logoOrange from "../../images/logo-orange.png";
 
 export default function Logo() {
   return (

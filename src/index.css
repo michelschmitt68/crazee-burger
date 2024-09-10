@@ -45,3 +45,7 @@ h1 {
 *{
   box-sizing: border-box;
 }
+
+p{
+  margin: 0;
+}
