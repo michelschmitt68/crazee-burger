@@ -4,18 +4,22 @@ import UserInfo from "./UserInfo";
 import PropTypes from 'prop-types';
 import Logo from "../../reusableUI/Logo";
 
-export default function Navbar({username}) {
+const Navbar = ({username}) => {
+
+
   return (
     <NavbarStyled>
-        <Logo />         
+        <Logo />    
         <UserInfo username={username}/>
     </NavbarStyled>
   )
 }
 
-Navbar.PropTypes = {
-    username: PropTypes.string.isRequired
-};
+export default Navbar;
+
+Navbar.propTypes= {
+  username: PropTypes.string.isRequired
+}
 
 const NavbarStyled = styled.div`
     display: flex;
@@ -33,6 +37,7 @@ const NavbarStyled = styled.div`
     & > :first-child {
         transform: scale(1);
         margin-left: 20px;
+        cursor: pointer;
 
   }
 `;

@@ -2,14 +2,22 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import PropTypes from 'prop-types';
 import { theme } from "../../../theme";
+ import { useNavigate, useParams } from "react-router-dom";
 
 
-const UserInfo = ({username}) => {
+const UserInfo = () => {
+  const navigate = useNavigate();
+  const { username } = useParams();
+
+  const handleLogout = () => {
+    navigate('/');
+  }
+
   return (
     <UserInfoStyled>
       <div className="text-container">
         <p>Hey, <span>{username}</span></p>
-        <a>Se déconnecter</a>
+        <a onClick={handleLogout}>Se déconnecter</a>
       </div>
       <BsPersonCircle className="icon" />
     </UserInfoStyled>

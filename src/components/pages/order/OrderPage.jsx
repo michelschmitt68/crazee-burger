@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+
 import Navbar from "./Navbar";
 import Main from "./Main";
 import styled from "styled-components";
@@ -6,16 +6,10 @@ import { theme } from "../../../theme";
 
 const OrderPage = () => {
 
-     const { username } = useParams();
-    // const navigate = useNavigate();
 
   return (
     <OrderPageStyled>
-      {/* <h1>Bonjour {username}</h1>
-      <button   
-        onClick={() => navigate(`/`)}>Déconnexion</button> */}
-    
-      <Navbar username={username}></Navbar>
+      <Navbar />
       <Main></Main>
     </OrderPageStyled>
   )
