@@ -26,12 +26,10 @@ export default OrderPage
 
 const OrderPageStyled = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     margin: 25px 56px;
-    background-color: green;
     max-width: 1400px;
-    min-width: 1400px;
+    width: 100%;
     
 
     &::before{
