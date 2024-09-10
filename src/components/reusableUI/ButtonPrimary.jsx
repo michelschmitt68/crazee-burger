@@ -10,6 +10,7 @@ export default function ButtonPrimary({label, Icon}) {
         {label}
         {Icon && Icon}
     </ButtonPrimaryStyled>
+    
   )
 }
 

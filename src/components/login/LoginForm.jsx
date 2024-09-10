@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import {theme} from '../../theme/index';
 import { IoChevronForwardSharp } from "react-icons/io5";
-import InputText from "./InputText";
+import InputText from "../reusableUI/InputText";
 import { BsPersonCircle } from "react-icons/bs";
-import ButtonPrimary from "./ButtonPrimary";
+import ButtonPrimary from "../reusableUI/ButtonPrimary";
 
 export default function LoginForm() {
 
