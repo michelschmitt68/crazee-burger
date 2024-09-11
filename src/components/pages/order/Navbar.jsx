@@ -3,13 +3,14 @@ import { theme } from "../../../theme";
 import UserInfo from "./UserInfo";
 import PropTypes from 'prop-types';
 import Logo from "../../reusableUI/Logo";
+import { refreshPage } from "../../../utils/window";
 
 const Navbar = ({username}) => {
 
 
   return (
     <NavbarStyled>
-        <Logo />    
+        <Logo onClick={() => refreshPage()}/>    
         <UserInfo username={username}/>
     </NavbarStyled>
   )
@@ -26,6 +27,7 @@ const NavbarStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: gray;
+    padding: 0 20px;
     width: 100%;
     background-color: ${theme.colors.white};
     height: 98px;
@@ -36,8 +38,6 @@ const NavbarStyled = styled.div`
     
     & > :first-child {
         transform: scale(1);
-        margin-left: 20px;
         cursor: pointer;
-
-  }
+        }
 `;
