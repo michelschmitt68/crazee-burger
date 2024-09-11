@@ -7,12 +7,6 @@ import Item from "./Item";
 export default function Main() {
   return (
     <MainStyled>
-      {fakeMenu1.map((item, index) => (
-        <Item 
-          key={index}
-          item={item}
-        />
-      ))}
       {fakeMenu2.map((item, index) => (
         <Item 
           key={index + fakeMenu1.length}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
+import ButtonPrimary from '../../reusableUI/ButtonPrimary';
 
 const Item = ({item}) => {
   return (
@@ -8,7 +9,14 @@ const Item = ({item}) => {
         
        <div className='item-container'>
         <img src={item.imageSource} className='item-image'></img>
-        {item.title}
+        <div className='item-infos'>
+            <p>{item.title}</p>
+            <div className='item-info-price'>
+                <span>{item.price.toFixed(2)}</span>
+                <ButtonPrimary label="Ajouter" className/>
+            </div>
+        </div>
+        
        </div>
     </ItemStyled>
   )
@@ -23,15 +31,15 @@ Item.propTypes= {
 
   const ItemStyled = styled.div`
     background-color: ${theme.colors.white};
-    height: 100%;
     width: 100%;
     border-radius: ${theme.borderRadius.extraRound};
-
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     .item-container{
         display: flex;
         flex-direction: column;
         padding: 20px;
-        gap: 15px;
+        gap: 30px;
+        max-height: 330px;
 
         .item-image{
             width: 100%;
@@ -40,5 +48,34 @@ Item.propTypes= {
             object-fit: contain;
         }
 
+        p{
+            font-family: "Amatic SC", cursive;
+            font-weight: ${theme.weights.bold};
+            font-size: ${theme.fonts.P4};
+            align-items: left;
+        }
+
+        .item-infos{
+            display: flex;
+            flex-direction: column;
+            padding: 0 5px;
+        }
+
+        span{
+            color: ${theme.colors.primary};
+        }
+
+        .item-info-price{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+
+            & > :last-child {
+                width: 95px;
+                height: 38px;
+                font-weight: ${theme.weights.light};
+            }
+        }
     }
   `;
