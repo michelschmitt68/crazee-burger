@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
-import {theme} from '../../theme/index';
+import {theme} from '../../../theme/index';
 import { IoChevronForwardSharp } from "react-icons/io5";
-import InputText from "../reusableUI/InputText";
+import InputText from "../../reusableUI/InputText";
 import { BsPersonCircle } from "react-icons/bs";
-import ButtonPrimary from "../reusableUI/ButtonPrimary";
+import ButtonPrimary from "../../reusableUI/ButtonPrimary";
 
 export default function LoginForm() {
 

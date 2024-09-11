@@ -16,6 +16,10 @@
 
 #root{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 a {
   font-weight: 500;
@@ -36,4 +40,12 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+p{
+  margin: 0;
 }

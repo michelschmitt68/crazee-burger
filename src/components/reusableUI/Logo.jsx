@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import {theme} from '../theme/index';
-import logoOrange from "../images/logo-orange.png";
+import {theme} from '../../theme/index';
+import logoOrange from "../../images/logo-orange.png";
+import PropTypes from 'prop-types';
 
-export default function Logo() {
+const Logo = ({onClick}) => {
   return (
-    <LogoStyled>
+    <LogoStyled onClick={onClick}>
       <h1>CRAZEE</h1>
       <img src={logoOrange} alt="logo-orange"></img>
       <h1>BURGER</h1>
@@ -12,7 +13,11 @@ export default function Logo() {
   )
 }
 
+export default Logo
 
+Logo.propTypes= {
+  onClick: PropTypes.func
+}
 
 const LogoStyled = styled.div`
   display: flex;
