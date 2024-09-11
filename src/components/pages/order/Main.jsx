@@ -26,7 +26,7 @@ const MainStyled = styled.div`
     padding: 50px 92px;
 
     background-color: ${theme.colors.background_white};
-    height: 100vh;  /* Assure que la hauteur prend tout l'écran */
+    height: 100vh;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
@@ -36,7 +36,7 @@ const MainStyled = styled.div`
       width: 240px;
       height: 330px;
       display: flex;
-      justify-content: center;  /* Centre le contenu de chaque grid-item horizontalement */
-      align-items: center;      /* Centre le contenu de chaque grid-item verticalement */
+      justify-content: center;
+      align-items: center;
     }
 `;
