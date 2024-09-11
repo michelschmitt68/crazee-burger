@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import PropTypes from 'prop-types';
 import { theme } from "../../../theme";
- import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const UserInfo = () => {
@@ -26,6 +26,7 @@ const UserInfo = () => {
 
 export default UserInfo;
 
+
 UserInfo.propTypes = {
   username: PropTypes.string.isRequired      
 };
@@ -33,7 +34,7 @@ UserInfo.propTypes = {
 const UserInfoStyled = styled.div`  
 
   display: flex;
-  margin-right: 70px;
+  padding-right: 50px;
   align-items: center;
   font-family: "Open Sans", cursive;
   color: ${theme.colors.greyBlue};
