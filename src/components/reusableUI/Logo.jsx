@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {theme} from '../../theme/index';
-import logoOrange from "../../images/logo-orange.png";
+import logoOrange from "/images/logo-orange.png";
 import PropTypes from 'prop-types';
 
 const Logo = ({onClick}) => {

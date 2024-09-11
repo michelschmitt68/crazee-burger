@@ -1,7 +1,7 @@
 import LoginForm from "./LoginForm";
 import styled from 'styled-components';
 import Logo from '../../reusableUI/Logo';
-import backgroundImage from '../../../images/burger-background.jpg';
+import backgroundImage from '/images/burger-background.jpg';
 
 export default function Login() {
 
