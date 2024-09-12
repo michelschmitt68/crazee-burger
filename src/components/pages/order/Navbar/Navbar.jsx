@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
 import UserInfo from "./UserInfo";
 import PropTypes from 'prop-types';
-import Logo from "../../reusableUI/Logo";
-import { refreshPage } from "../../../utils/window";
+import Logo from "../../../reusableUI/Logo";
+import { refreshPage } from "../../../../utils/window";
 
 const Navbar = ({username}) => {
 
@@ -35,6 +35,7 @@ const NavbarStyled = styled.div`
     left: 0;
     border-top-right-radius: ${theme.borderRadius.extraRound};
     border-top-left-radius: ${theme.borderRadius.extraRound};
+    border-bottom: 1px solid ${theme.colors.greyLight};
     
     & > :first-child {
         transform: scale(1);
