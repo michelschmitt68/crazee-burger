@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import PropTypes from 'prop-types';
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
 import { useNavigate } from "react-router-dom";
 
 

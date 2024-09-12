@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
 import UserInfo from "./UserInfo";
 import PropTypes from 'prop-types';
-import Logo from "../../reusableUI/Logo";
-import { refreshPage } from "../../../utils/window";
+import Logo from "../../../reusableUI/Logo";
+import { refreshPage } from "../../../../utils/window";
 
 const Navbar = ({username}) => {
 

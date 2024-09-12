@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { theme } from '../../../theme';
-import ButtonPrimary from '../../reusableUI/ButtonPrimary';
+import { theme } from '../../../../theme';
+import ButtonPrimary from '../../../reusableUI/ButtonPrimary';
 
 const Item = ({item}) => {
   return (
