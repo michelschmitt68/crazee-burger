@@ -6,7 +6,8 @@ import Logo from "../../../reusableUI/Logo";
 import { refreshPage } from "../../../../utils/window";
 import ToggleButton from "./ToggleButton";
 import { useState } from "react";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -16,9 +17,22 @@ const Navbar = ({username}) => {
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
-  }
+    if (!isChecked) {
+      toast.info("Mode admin activé", {
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
+    <>
     <NavbarStyled>
         <Logo onClick={() => refreshPage()}/>
           <div className="right-nav">
@@ -30,8 +44,9 @@ const Navbar = ({username}) => {
             />  
           <UserInfo username={username}/>
         </div>
-        {/* <ToastContainer className="toaster" bodyClassName="body-toast" /> */}
     </NavbarStyled>
+    <ToastContainer className="toaster" bodyClassName="body-toast" />
+    </>
   )
 }
 
