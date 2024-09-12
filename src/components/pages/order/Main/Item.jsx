@@ -12,7 +12,7 @@ const Item = ({title, imageSource, price}) => {
       <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">
-          <div className="left-description">{price}</div>
+          <div className="left-description">{price.toFixed(2)} €</div>
           <div className="right-description">
             <PrimaryButton className="primary-button" label={"Ajouter"} />
           </div>
@@ -33,8 +33,8 @@ Item.propTypes= {
 
   const ItemStyled = styled.div`
   background: ${theme.colors.white};
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 330px;
   display: grid;
   grid-template-rows: 65% 1fr;
   padding: 20px;
@@ -62,7 +62,7 @@ Item.propTypes= {
 
     .title {
       margin: auto 0;
-      font-size: ${theme.fonts.P4}
+      font-size: ${theme.fonts.P4};
       position: relative;
       bottom: 10px;
       font-weight: ${theme.weights.bold};
@@ -83,11 +83,10 @@ Item.propTypes= {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-weight: ${theme.weights.medium};
+        font-weight: ${theme.weights.regular};
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-weight: ${theme.weights.medium};
         color: ${theme.colors.primary};
       }
 
@@ -101,6 +100,9 @@ Item.propTypes= {
           font-size: ${theme.fonts.XS};
           cursor: pointer;
           padding: 12px;
+          height: 38px;
+          width: 95px;
+          ;
         }
       }
     }

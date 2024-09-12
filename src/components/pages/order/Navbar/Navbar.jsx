@@ -35,6 +35,7 @@ const NavbarStyled = styled.div`
     left: 0;
     border-top-right-radius: ${theme.borderRadius.extraRound};
     border-top-left-radius: ${theme.borderRadius.extraRound};
+    border-bottom: 1px solid ${theme.colors.greyLight};
     
     & > :first-child {
         transform: scale(1);
