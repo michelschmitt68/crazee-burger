@@ -4,14 +4,29 @@ import UserInfo from "./UserInfo";
 import PropTypes from 'prop-types';
 import Logo from "../../../reusableUI/Logo";
 import { refreshPage } from "../../../../utils/window";
+import ToggleButton from "./ToggleButton";
+import { useState } from "react";
 
 const Navbar = ({username}) => {
 
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  }
 
   return (
     <NavbarStyled>
-        <Logo onClick={() => refreshPage()}/>    
-        <UserInfo username={username}/>
+        <Logo onClick={() => refreshPage()}/>
+          <div className="right-nav">
+            <ToggleButton 
+              isChecked={isChecked}
+              onToggle={handleToggle}
+              labelIfChecked={"DÉSACTIVER LE MODE ADMIN"}
+              labelIfUnchecked={"ACTIVER LE MODE ADMIN"}
+            />  
+          <UserInfo username={username}/>
+        </div>
     </NavbarStyled>
   )
 }
@@ -41,4 +56,10 @@ const NavbarStyled = styled.div`
         transform: scale(1);
         cursor: pointer;
         }
+    
+    .right-nav{
+      display: flex;
+      display: inline-flex;
+      gap: 50px;
+    }
 `;
