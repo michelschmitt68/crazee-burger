@@ -6,6 +6,9 @@ import Logo from "../../../reusableUI/Logo";
 import { refreshPage } from "../../../../utils/window";
 import ToggleButton from "./ToggleButton";
 import { useState } from "react";
+import { ToastContainer} from 'react-toastify';
+
+
 
 const Navbar = ({username}) => {
 
@@ -27,6 +30,7 @@ const Navbar = ({username}) => {
             />  
           <UserInfo username={username}/>
         </div>
+        {/* <ToastContainer className="toaster" bodyClassName="body-toast" /> */}
     </NavbarStyled>
   )
 }
@@ -62,4 +66,22 @@ const NavbarStyled = styled.div`
       display: inline-flex;
       gap: 50px;
     }
+
+    .toaster {
+    max-width: 300px;
+  }
+
+  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
+    background: ${theme.colors.background_dark};
+  }
+
+  .body-toast {
+    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
+      margin-right: 20px;
+      margin-left: 5px;
+    }
+    div {
+      line-height: 1.3em;
+    }
+  }
 `;
