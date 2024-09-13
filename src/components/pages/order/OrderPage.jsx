@@ -4,7 +4,6 @@ import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import { useParams } from "react-router-dom";
-import PanelAdmin from "./PanelAdmin/PanelAdmin";
 
 const OrderPage = () => {
 
@@ -15,7 +14,6 @@ const OrderPage = () => {
     <div className="container">
       <Navbar username={username} />
       <Main />
-
     </div>
   </OrderPageStyled>
   )

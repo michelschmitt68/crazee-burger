@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import TabAdmin from "./tabAdmin";
+import { FiChevronDown } from "react-icons/fi";
+import { IoAdd } from "react-icons/io5";
+import { FaPen } from "react-icons/fa6";
 
 
 
@@ -8,7 +12,20 @@ const PanelAdmin = () => {
 
   return (
     <PanelAdminStyled>
-      <div className="onglets">Onglets</div>
+      <div className="onglets">
+        <TabAdmin
+            Icon={<FiChevronDown className="icon" />}
+            inputValue=""
+        />
+        <TabAdmin
+            Icon={<IoAdd  className="icon"/>}
+            inputValue="Ajouter un produit"
+        />
+        <TabAdmin
+            Icon={<FaPen className="icon"/>}
+            inputValue="Modifier un produit"
+        />
+      </div>
       <div className="description">Ajouter un produit</div>
     </PanelAdminStyled>
   )
@@ -21,7 +38,6 @@ const PanelAdminStyled = styled.div`
   position: fixed;
   bottom: 20px;
   width: 1400px;
-  background-color: white;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -30,13 +46,19 @@ const PanelAdminStyled = styled.div`
 
 
   .onglets{
-    height: 44px;
-    background-color: green;
+    margin-left: 5vh;
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
   }
 
   .description{
     height: 250px;
-  }
+    background-color: white;
+    border: 1px solid ${theme.colors.greyLight};
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
     
     
   
