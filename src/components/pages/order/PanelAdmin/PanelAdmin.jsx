@@ -4,18 +4,24 @@ import TabAdmin from "./tabAdmin";
 import { FiChevronDown } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import { FaPen } from "react-icons/fa6";
+import { useContext } from "react";
+import AdminContext from "../../../../contexts/AdminContext";
 
 
 
 const PanelAdmin = () => {
 
+    const { isChecked } = useContext(AdminContext);
 
+    console.log(isChecked);
+    if (!isChecked) return null;
   return (
+
     <PanelAdminStyled>
       <div className="onglets">
         <TabAdmin
             Icon={<FiChevronDown className="icon" />}
-            inputValue=""
+            inputValue=""a
         />
         <TabAdmin
             Icon={<IoAdd  className="icon"/>}
@@ -28,6 +34,7 @@ const PanelAdmin = () => {
       </div>
       <div className="description">Ajouter un produit</div>
     </PanelAdminStyled>
+
   )
 }
 

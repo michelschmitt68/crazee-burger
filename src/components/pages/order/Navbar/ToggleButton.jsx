@@ -3,13 +3,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import PropTypes from 'prop-types';
+import { useContext } from "react";
+import AdminContext from "../../../../contexts/AdminContext";
 
 const ToggleButton = ({
-  isChecked,
-  onToggle,
   labelIfChecked,
-  labelIfUnchecked,
+  labelIfUnchecked
 }) => {
+
+  const {isChecked, handleToggle} = useContext(AdminContext);
 
   return (
     <ToggleButtonStyled>
@@ -18,7 +20,7 @@ const ToggleButton = ({
         className="toggle"
         id="rounded"
         checked={isChecked}
-        onChange={onToggle}
+        onChange={handleToggle}
       />
       <label
         htmlFor="rounded"
@@ -33,8 +35,6 @@ const ToggleButton = ({
 export default ToggleButton
 
 ToggleButton.propTypes= {
-  isChecked: PropTypes.bool.isRequired,
-  onToggle: PropTypes.func.isRequired,
   labelIfChecked: PropTypes.string,
   labelIfUnchecked: PropTypes.string
 }
