@@ -7,9 +7,7 @@ import { theme } from '../../../../theme';
 const ToastAdmin = () => {
     
   return (
-    <ToastAdminStyled>
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
-    </ToastAdminStyled>
+      <ToastContainerStyled bodyClassName="body-toast" />
   )
 }
 
@@ -17,10 +15,11 @@ export default ToastAdmin
 
 
 
-const ToastAdminStyled = styled.div`
-  .toaster {
-    max-width: 300px;
-  }
+const ToastContainerStyled = styled(ToastContainer)`
+
+  max-width: 300px;
+
+
   .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
     background: ${theme.colors.background_dark};
   }
