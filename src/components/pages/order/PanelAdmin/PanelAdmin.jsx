@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import TabAdmin from "./tabAdmin";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import { FaPen } from "react-icons/fa6";
 import { useContext, useState } from "react";
@@ -16,6 +16,7 @@ const PanelAdmin = () => {
 
     const handleVisibility = () => {
         setIsVisible(!isVisible)
+        console.log(isVisible);
       };
 
 
@@ -26,9 +27,9 @@ const PanelAdmin = () => {
         <PanelAdminStyled>
           <div className="onglets">
             <TabAdmin
-                Icon={<FiChevronDown className="icon" />}
-                inputValue=""
+                Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown /> }
                 onClick={handleVisibility}
+                className={!isVisible ? "tab-select" : ""}
             />
             <TabAdmin
                 Icon={<IoAdd  className="icon"/>}
@@ -53,7 +54,7 @@ export default PanelAdmin;
 const PanelAdminStyled = styled.div`
   display: flex;
   position: fixed;
-  bottom: 20px;
+  bottom: 32px;
   width: 1400px;
   z-index: 1;
   display: flex;
@@ -75,6 +76,8 @@ const PanelAdminStyled = styled.div`
     border: 1px solid ${theme.colors.greyLight};
     padding: 20px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    border-bottom-right-radius: ${theme.borderRadius.extraRound};
 }
     
     

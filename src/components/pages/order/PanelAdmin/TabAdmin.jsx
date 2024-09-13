@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { theme } from "../../../../theme";
 
 
-const TabAdmin = ({Icon, inputValue, onClick}) => {
+const TabAdmin = ({Icon, inputValue, onClick, className}) => {
   return (
-    <TabAdminStyled onClick={onClick}>
+    <TabAdminStyled onClick={onClick} className={className}>
       {Icon && Icon}
       {inputValue}
     </TabAdminStyled>
@@ -18,7 +18,8 @@ export default TabAdmin
 TabAdmin.propTypes = {
     Icon: PropTypes.element, 
     inputValue: PropTypes.string,
-    onClick: PropTypes.func         
+    onClick: PropTypes.func,
+    className: PropTypes.string         
   };
 
 const TabAdminStyled = styled.div`
@@ -37,5 +38,11 @@ const TabAdminStyled = styled.div`
     cursor: pointer;
     .icon{
         font-size: 15px;
+    }
+
+    &.tab-select{
+        background-color: black;
+        color: white;
+
     }
 `;
