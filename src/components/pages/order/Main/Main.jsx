@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import "../../../../fakeData/fakeMenu"
 import Menu from "./Menu";
+import PanelAdmin from "../PanelAdmin/PanelAdmin";
 
 
 export default function Main() {
@@ -9,6 +10,7 @@ export default function Main() {
     <MainStyled className="main">
       {/* <div className="basket"></div> */}
       <Menu />
+      <PanelAdmin/>
     </MainStyled>
   )
 }
