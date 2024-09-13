@@ -11,40 +11,64 @@ import AdminContext from "../../../../contexts/AdminContext";
 
 const PanelAdmin = () => {
     const [isVisible, setIsVisible] = useState(true);
+    const [activeTab, setActiveTab] = useState("addProduct");
+    const [description, setDescription] = useState("Ajouter un produit")
     const { isChecked } = useContext(AdminContext);
 
 
     const handleVisibility = () => {
         setIsVisible(!isVisible)
-        console.log(isVisible);
       };
 
+      const tabs = [
+        {
+          id: "toggle",
+          Icon: !isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />,
+          onClick: handleVisibility,
+          className: !isVisible ? "tab-select" : ""
+        },
+        {
+          id: "addProduct",
+          Icon: <IoAdd className="icon" />,
+          inputValue: "Ajouter un produit",
+          onClick: () => {
+            setActiveTab("addProduct");
+            setDescription("Ajouter un produit");
+          },
+          className: activeTab === "addProduct" ? "tab-select" : ""
+        },
+        {
+          id: "editProduct",
+          Icon: <FaPen className="icon" />,
+          inputValue: "Modifier un produit",
+          onClick: () => {
+            setActiveTab("editProduct");
+            setDescription("Modifier un produit");
+          },
+          className: activeTab === "editProduct" ? "tab-select" : ""
+        }
+      ];
 
-    if (!isChecked) return null;
+
+if (!isChecked) return null;
   return (
 
-    <>
-        <PanelAdminStyled>
-          <div className="onglets">
-            <TabAdmin
-                Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown /> }
-                onClick={handleVisibility}
-                className={!isVisible ? "tab-select" : ""}
-            />
-            <TabAdmin
-                Icon={<IoAdd  className="icon"/>}
-                inputValue="Ajouter un produit"
-            />
-            <TabAdmin
-                Icon={<FaPen className="icon"/>}
-                inputValue="Modifier un produit"
-            />
-          </div>
-          {isVisible && (
-          <div className="description">Ajouter un produit</div>
-            )}
-        </PanelAdminStyled>
-    </>
+   <PanelAdminStyled>
+      <div className="onglets">
+        {tabs.map((tab) => (
+          <TabAdmin
+            key={tab.id}
+            Icon={tab.Icon}
+            inputValue={tab.inputValue}
+            onClick={tab.onClick}
+            className={tab.className} // Pass className here
+          />
+        ))}
+      </div>
+      {isVisible && (
+        <div className="description">{description}</div>
+      )}
+    </PanelAdminStyled>
 
   )
 }
