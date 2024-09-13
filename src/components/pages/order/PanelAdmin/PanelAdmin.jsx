@@ -4,36 +4,46 @@ import TabAdmin from "./tabAdmin";
 import { FiChevronDown } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import { FaPen } from "react-icons/fa6";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 
 
 
 const PanelAdmin = () => {
-
+    const [isVisible, setIsVisible] = useState(true);
     const { isChecked } = useContext(AdminContext);
 
-    console.log(isChecked);
+
+    const handleVisibility = () => {
+        setIsVisible(!isVisible)
+      };
+
+
     if (!isChecked) return null;
   return (
 
-    <PanelAdminStyled>
-      <div className="onglets">
-        <TabAdmin
-            Icon={<FiChevronDown className="icon" />}
-            inputValue=""a
-        />
-        <TabAdmin
-            Icon={<IoAdd  className="icon"/>}
-            inputValue="Ajouter un produit"
-        />
-        <TabAdmin
-            Icon={<FaPen className="icon"/>}
-            inputValue="Modifier un produit"
-        />
-      </div>
-      <div className="description">Ajouter un produit</div>
-    </PanelAdminStyled>
+    <>
+        <PanelAdminStyled>
+          <div className="onglets">
+            <TabAdmin
+                Icon={<FiChevronDown className="icon" />}
+                inputValue=""
+                onClick={handleVisibility}
+            />
+            <TabAdmin
+                Icon={<IoAdd  className="icon"/>}
+                inputValue="Ajouter un produit"
+            />
+            <TabAdmin
+                Icon={<FaPen className="icon"/>}
+                inputValue="Modifier un produit"
+            />
+          </div>
+          {isVisible && (
+          <div className="description">Ajouter un produit</div>
+            )}
+        </PanelAdminStyled>
+    </>
 
   )
 }

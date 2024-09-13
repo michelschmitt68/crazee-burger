@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { theme } from "../../../../theme";
 
 
-const TabAdmin = ({Icon, inputValue}) => {
+const TabAdmin = ({Icon, inputValue, onClick}) => {
   return (
-    <TabAdminStyled>
+    <TabAdminStyled onClick={onClick}>
       {Icon && Icon}
       {inputValue}
-
     </TabAdminStyled>
   )
 }
@@ -18,7 +17,8 @@ export default TabAdmin
 
 TabAdmin.propTypes = {
     Icon: PropTypes.element, 
-    inputValue: PropTypes.string         
+    inputValue: PropTypes.string,
+    onClick: PropTypes.func         
   };
 
 const TabAdminStyled = styled.div`
