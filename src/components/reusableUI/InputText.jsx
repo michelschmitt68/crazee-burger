@@ -40,7 +40,7 @@ const InputStyled = styled.div`
 
     input{
         border: none;
-        font-size: ${theme.fonts.P0};
+        font-size: ${theme.fonts.SM};
         color: ${theme.colors.dark};
         width: 100%;
 

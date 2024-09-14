@@ -45,7 +45,7 @@ const UserInfoStyled = styled.div`
     text-align: right;
     
     p{
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.SM};
       font-weight: ${theme.weights.bold};
       span{
         color: ${theme.colors.primary};
