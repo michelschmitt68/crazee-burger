@@ -23,7 +23,7 @@ const Navbar = ({username}) => {
                 labelIfChecked={"DÉSACTIVER LE MODE ADMIN"}
                 labelIfUnchecked={"ACTIVER LE MODE ADMIN"}
               />  
-            <UserInfo username={username}/>
+            <UserInfo />
           </div>
       </NavbarStyled>
       <ToastAdmin />

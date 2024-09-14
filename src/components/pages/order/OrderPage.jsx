@@ -10,7 +10,6 @@ import AdminContext from "../../../contexts/AdminContext";
 
 const OrderPage = () => {
 
-  const {username} = useParams();
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
@@ -34,7 +33,7 @@ const OrderPage = () => {
     <AdminContext.Provider value={{isChecked, handleToggle}}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar username={username} />
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
