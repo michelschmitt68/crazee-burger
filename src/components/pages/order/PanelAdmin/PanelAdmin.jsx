@@ -6,6 +6,7 @@ import { IoAdd } from "react-icons/io5";
 import { FaPen } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
+import AddProductPanel from "./AddProductPanel";
 
 
 
@@ -68,7 +69,10 @@ if (!isChecked) return null;
         ))}
       </div>
       {isVisible && (
-        <div className="description">{description}</div>
+
+        <div className="description">
+          <AddProductPanel>{description}</AddProductPanel>
+        </div>
       )}
     </PanelAdminStyled>
 
@@ -100,7 +104,7 @@ const PanelAdminStyled = styled.div`
     height: 250px;
     background-color: white;
     border: 1px solid ${theme.colors.greyLight};
-    padding: 20px;
+    padding: 30px 70px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};

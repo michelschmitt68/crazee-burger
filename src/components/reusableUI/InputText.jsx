@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 
 
-const InputText = ({inputValue, onChange, placeholder, Icon}) => {
+const InputText = ({inputValue, onChange, placeholder, Icon, className}) => {
   return (
-    <InputStyled >
+    <InputStyled className={className}>
       {Icon && Icon}
       <input
         type="text"
@@ -19,10 +19,11 @@ const InputText = ({inputValue, onChange, placeholder, Icon}) => {
 }
 
 InputText.propTypes = {
-  inputValue: PropTypes.string.isRequired, 
-  onChange: PropTypes.func.isRequired,     
+  inputValue: PropTypes.string,
+  onChange: PropTypes.func,  
   placeholder: PropTypes.string,
-  Icon: PropTypes.element            
+  Icon: PropTypes.element,
+  className: PropTypes.string         
 };
 
 export default InputText;
@@ -39,10 +40,10 @@ const InputStyled = styled.div`
     margin: 18px 0;
 
     input{
-        border: none;
-        font-size: ${theme.fonts.SM};
-        color: ${theme.colors.dark};
-        width: 100%;
+      border: none;
+      font-size: ${theme.fonts.SM};
+      color: ${theme.colors.dark};
+      width: 100%;
 
         &::placeholder{
             background-color: ${theme.colors.white};
@@ -53,4 +54,5 @@ const InputStyled = styled.div`
         color: ${theme.colors.greyMedium};
         margin-right: 8px;
     }
+
 `;
