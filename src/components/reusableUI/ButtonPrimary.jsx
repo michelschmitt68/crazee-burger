@@ -31,7 +31,7 @@ const ButtonPrimaryStyled = styled.button`
     line-height: 1;
     padding: 18px 24px;
     border-radius: ${theme.borderRadius.round};
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.SM};
     font-weight: ${theme.weights.bold};
     color: ${theme.colors.white};
     background-color: ${theme.colors.primary};
@@ -60,7 +60,7 @@ const ButtonPrimaryStyled = styled.button`
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: ${theme.fonts.P0};
+        font-size: ${theme.fonts.SM};
         margin: 1px 0 0 4px; 
         font-weight: ${theme.weights.bold};
 

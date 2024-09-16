@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import PropTypes from 'prop-types';
 import { theme } from "../../../../theme";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
-const UserInfo = ({username}) => {
+const UserInfo = () => {
+  const {username} = useParams();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -27,7 +28,7 @@ export default UserInfo;
 
 
 UserInfo.propTypes = {
-  username: PropTypes.string.isRequired      
+  username: PropTypes.string
 };
 
 const UserInfoStyled = styled.div`  
@@ -45,7 +46,7 @@ const UserInfoStyled = styled.div`
     text-align: right;
     
     p{
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.SM};
       font-weight: ${theme.weights.bold};
       span{
         color: ${theme.colors.primary};

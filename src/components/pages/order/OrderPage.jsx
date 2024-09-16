@@ -4,18 +4,40 @@ import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { toast} from 'react-toastify';
+import AdminContext from "../../../contexts/AdminContext";
 
 const OrderPage = () => {
 
-  const {username} = useParams();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+
+    setIsChecked(!isChecked);
+    if (!isChecked) {
+      toast.info("Mode admin activé", {
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
-  <OrderPageStyled>
-    <div className="container">
-      <Navbar username={username} />
-      <Main />
-    </div>
-  </OrderPageStyled>
+    <AdminContext.Provider value={{isChecked, handleToggle}}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </AdminContext.Provider>
   )
 }
 
