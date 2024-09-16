@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import UserInfo from "./UserInfo";
-import PropTypes from 'prop-types';
 import Logo from "../../../reusableUI/Logo";
 import { refreshPage } from "../../../../utils/window";
 import ToggleButton from "./ToggleButton";
@@ -11,7 +10,7 @@ import ToastAdmin from "./ToastAdmin";
 
 
 
-const Navbar = ({username}) => {
+const Navbar = () => {
 
 
   return (
@@ -34,9 +33,6 @@ const Navbar = ({username}) => {
 
 export default Navbar;
 
-Navbar.propTypes= {
-  username: PropTypes.string.isRequired
-}
 
 const NavbarStyled = styled.div`
     display: flex;

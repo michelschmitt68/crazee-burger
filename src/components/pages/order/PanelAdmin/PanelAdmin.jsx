@@ -34,6 +34,7 @@ const PanelAdmin = () => {
           onClick: () => {
             setActiveTab("addProduct");
             setDescription("Ajouter un produit");
+            setIsVisible(true);
           },
           className: activeTab === "addProduct" ? "tab-select" : ""
         },
@@ -44,6 +45,7 @@ const PanelAdmin = () => {
           onClick: () => {
             setActiveTab("editProduct");
             setDescription("Modifier un produit");
+            setIsVisible(true);
           },
           className: activeTab === "editProduct" ? "tab-select" : ""
         }

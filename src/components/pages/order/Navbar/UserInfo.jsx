@@ -28,7 +28,7 @@ export default UserInfo;
 
 
 UserInfo.propTypes = {
-  username: PropTypes.string.isRequired      
+  username: PropTypes.string
 };
 
 const UserInfoStyled = styled.div`  
