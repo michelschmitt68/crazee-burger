@@ -3,15 +3,23 @@ import { theme } from "../../../../theme";
 import "../../../../fakeData/fakeMenu"
 import Menu from "./Menu";
 import PanelAdmin from "../PanelAdmin/PanelAdmin";
+import { useState } from "react";
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import MenusContext from "../../../../contexts/MenusContext";
 
 
 export default function Main() {
+
+  const [menus, setMenus] = useState(fakeMenu2)
+
   return (
-    <MainStyled className="main">
-      {/* <div className="basket"></div> */}
-      <Menu />
-      <PanelAdmin/>
-    </MainStyled>
+    <MenusContext.Provider value={{menus, setMenus}}>
+      <MainStyled className="main">
+        {/* <div className="basket"></div> */}
+        <Menu />
+        <PanelAdmin/>
+      </MainStyled>
+    </MenusContext.Provider>
   )
 }
 

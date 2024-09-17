@@ -12,7 +12,7 @@ const Item = ({title, imageSource, price}) => {
       <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">
-          <div className="left-description">{price.toFixed(2)} €</div>
+          <div className="left-description">{price} €</div>
           <div className="right-description">
             <PrimaryButton className="primary-button" label={"Ajouter"} />
           </div>

@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import Item from "./Item";
-import { useState } from "react";
+import { useContext} from "react";
 import { theme } from "../../../../theme";
+import MenusContext from "../../../../contexts/MenusContext";
 
 const Menu = () => {
 
-  const [menu, setmenu] = useState(fakeMenu2)
+  const {menus, setMenus} = useContext(MenusContext);
+
   return (
     <MenuStyled className="menu">
-        {menu.map(({id, title, imageSource, price}) => (
+        {menus.map(({id, title, imageSource, price}) => (
           <Item 
             key={id}
             title={title}
