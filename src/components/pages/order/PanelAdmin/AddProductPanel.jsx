@@ -41,6 +41,7 @@ const AddProductPanel = () => {
         <div className="image-add">Aucune Image</div>
         <div className="inputs">
             <InputText
+                required={false}
                 Icon={<FaHamburger/>}
                 placeholder={"Nom du produit (ex: Super Burger)"}
                 className={"input-panel-admin"}
@@ -48,6 +49,7 @@ const AddProductPanel = () => {
                 onChange={(event) => {setNameInputValue(event.target.value)}}
             />
             <InputText
+                equired={false}
                 Icon={<BsFillCameraFill/>}
                 placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}
                 className={"input-panel-admin"}
@@ -55,6 +57,7 @@ const AddProductPanel = () => {
                 onChange={(event) => {setImageInputValue(event.target.value)}}
             />
             <InputText
+                required={false}
                 Icon={<MdOutlineEuro/>}
                 placeholder={"Prix"}
                 className={"input-panel-admin"}

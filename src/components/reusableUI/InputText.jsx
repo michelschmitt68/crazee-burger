@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 
 
-const InputText = ({inputValue, onChange, placeholder, Icon, className}) => {
+const InputText = ({required, inputValue, onChange, placeholder, Icon, className}) => {
   return (
     <InputStyled className={className}>
       {Icon && Icon}
       <input
         type="text"
-        required
+        required={required}
         value={inputValue}
         onChange={onChange}
         placeholder={placeholder}
@@ -19,6 +19,7 @@ const InputText = ({inputValue, onChange, placeholder, Icon, className}) => {
 }
 
 InputText.propTypes = {
+  required: PropTypes.bool,
   inputValue: PropTypes.string,
   onChange: PropTypes.func,  
   placeholder: PropTypes.string,

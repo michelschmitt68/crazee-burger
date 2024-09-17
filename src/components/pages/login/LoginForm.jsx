@@ -30,7 +30,8 @@ export default function LoginForm() {
                 <hr />
                 <h2>Connectez-vous</h2>
             </div>
-            <InputText 
+            <InputText
+                required={true} 
                 inputValue={inputValue} 
                 onChange={handleChange} 
                 placeholder="Entrez votre prénom" 
