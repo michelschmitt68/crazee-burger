@@ -7,7 +7,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import MenusContext from "../../../../contexts/MenusContext";
-import { number } from "prop-types";
+import { toast } from "react-toastify";
 
 
 const AddProductPanel = () => {
@@ -32,6 +32,18 @@ const AddProductPanel = () => {
         };
 
         setMenus([...menus, newMenu]);
+
+        toast.info("Ajouté avec succès !", {
+            theme: "dark",
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+        
         setNameInputValue("");
         setImageInputValue("");
         setPriceInputValue("");
