@@ -7,6 +7,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import MenusContext from "../../../../contexts/MenusContext";
+import { number } from "prop-types";
 
 
 const AddProductPanel = () => {
@@ -22,9 +23,9 @@ const AddProductPanel = () => {
         event.preventDefault();
         const newMenu = {
             id: menus.length + 1,
-            imageSource: imageInputValue,
+            imageSource: imageInputValue === "" ? "/images/coming-soon.png" : imageInputValue, 
             title: nameInputValue,
-            price: priceInputValue,
+            price: priceInputValue === "" ? 0 : parseFloat(priceInputValue),
             quantity: 0,
             isAvailable: true,
             isAdvertised: false,
@@ -41,6 +42,7 @@ const AddProductPanel = () => {
         <div className="image-add">Aucune Image</div>
         <div className="inputs">
             <InputText
+                type={"text"}
                 required={false}
                 Icon={<FaHamburger/>}
                 placeholder={"Nom du produit (ex: Super Burger)"}
@@ -49,6 +51,7 @@ const AddProductPanel = () => {
                 onChange={(event) => {setNameInputValue(event.target.value)}}
             />
             <InputText
+                type={"text"}
                 equired={false}
                 Icon={<BsFillCameraFill/>}
                 placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}
@@ -57,6 +60,7 @@ const AddProductPanel = () => {
                 onChange={(event) => {setImageInputValue(event.target.value)}}
             />
             <InputText
+                type={"number"}
                 required={false}
                 Icon={<MdOutlineEuro/>}
                 placeholder={"Prix"}

@@ -31,6 +31,7 @@ export default function LoginForm() {
                 <h2>Connectez-vous</h2>
             </div>
             <InputText
+                type={"text"}
                 required={true} 
                 inputValue={inputValue} 
                 onChange={handleChange} 
