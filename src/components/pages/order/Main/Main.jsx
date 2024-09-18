@@ -6,6 +6,7 @@ import PanelAdmin from "../PanelAdmin/PanelAdmin";
 import { useState } from "react";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import MenusContext from "../../../../contexts/MenusContext";
+import EmptyMenu from "./EmptyMenu";
 
 
 export default function Main() {
@@ -16,7 +17,11 @@ export default function Main() {
     <MenusContext.Provider value={{menus, setMenus}}>
       <MainStyled className="main">
         {/* <div className="basket"></div> */}
-        <Menu />
+        {menus.length === 0 ? (
+          <Menu />
+        ) : (
+          <EmptyMenu />
+        )}      
         <PanelAdmin/>
       </MainStyled>
     </MenusContext.Provider>
