@@ -2,10 +2,30 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
 import PrimaryButton from '../../../reusableUI/ButtonPrimary';
+import { TiDelete } from 'react-icons/ti';
+import AdminContext from '../../../../contexts/AdminContext';
+import { useContext } from 'react';
+import MenusContext from '../../../../contexts/MenusContext';
 
-const Item = ({title, imageSource, price}) => {
+const Item = ({ title, imageSource, price }) => {
+
+  // context
+  const { isChecked } = useContext(AdminContext);
+  const { setMenus } = useContext(MenusContext);
+  
+  const handleClickDelete = () => {
+    setMenus(prevMenus => prevMenus.filter(menu => menu.title !== title));
+  };
+
   return (
     <ItemStyled className="produit">
+      {isChecked && (
+        <PrimaryButton 
+          Icon={<TiDelete className="icon" />}
+          className={"delete-menu-button"}
+          onClick={() => handleClickDelete()} // Corrigé ici
+        />
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -19,19 +39,19 @@ const Item = ({title, imageSource, price}) => {
         </div>
       </div>
     </ItemStyled>
-  )
-}
+  );
+};
 
 export default Item;
 
-Item.propTypes= {
-    title: PropTypes.string,
-    imageSource: PropTypes.string,
-    price: PropTypes.number
-  }
+Item.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  imageSource: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
 
-
-  const ItemStyled = styled.div`
+const ItemStyled = styled.div`
   background: ${theme.colors.white};
   width: 240px;
   height: 330px;
@@ -41,6 +61,30 @@ Item.propTypes= {
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
+
+  .delete-menu-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    background-color: ${theme.colors.white};
+    border: none;
+    color: ${theme.colors.primary};
+    cursor: pointer;
+    &:hover:not(:disabled) {
+      border: none;
+    }
+    .icon {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-size: 20px;
+      padding: 0px;
+    }
+  }
 
   .image {
     width: 100%;
@@ -102,9 +146,8 @@ Item.propTypes= {
           padding: 12px;
           height: 38px;
           width: 95px;
-          ;
         }
       }
     }
   }
-`
+`;
