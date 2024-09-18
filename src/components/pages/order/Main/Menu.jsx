@@ -6,7 +6,9 @@ import MenusContext from "../../../../contexts/MenusContext";
 
 const Menu = () => {
 
-  const {menus, setMenus} = useContext(MenusContext);
+    //Context
+  const {menus} = useContext(MenusContext);
+
 
   return (
     <MenuStyled className="menu">

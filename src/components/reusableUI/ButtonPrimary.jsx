@@ -2,11 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import PropTypes from 'prop-types';
 
-export default function ButtonPrimary({label, Icon, className}) {
+export default function ButtonPrimary({label, Icon, className, onClick}) {
 
   return (
     
-    <ButtonPrimaryStyled className={className}>
+    <ButtonPrimaryStyled 
+        className={className}
+        onClick={onClick}
+    >
         {label}
         {Icon && Icon}
     </ButtonPrimaryStyled>
@@ -17,7 +20,8 @@ export default function ButtonPrimary({label, Icon, className}) {
 ButtonPrimary.propTypes = {
     label: PropTypes.string,
     Icon: PropTypes.element,
-    className: PropTypes.string     
+    className: PropTypes.string,
+    onClick: PropTypes.func   
   };
 
 const ButtonPrimaryStyled = styled.button`
