@@ -1,77 +1,52 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import TabAdmin from "./tabAdmin";
+import AdminTab from "./AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { IoAdd } from "react-icons/io5";
-import { FaPen } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import AdminContext from "../../../../contexts/AdminContext";
 import AddProductPanel from "./AddProductPanel";
+import tabsConfig from "./tabsConfig";
+
 
 
 
 const PanelAdmin = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [activeTab, setActiveTab] = useState("addProduct");
-    const [description, setDescription] = useState("Ajouter un produit")
+    //Context
     const { isChecked } = useContext(AdminContext);
-
-
-    const handleVisibility = () => {
-        setIsVisible(!isVisible)
-      };
-
-      const tabs = [
-        {
-          id: "toggle",
-          Icon: !isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />,
-          onClick: handleVisibility,
-          className: !isVisible ? "tab-select" : ""
-        },
-        {
-          id: "addProduct",
-          Icon: <IoAdd className="icon" />,
-          inputValue: "Ajouter un produit",
-          onClick: () => {
-            setActiveTab("addProduct");
-            setDescription("Ajouter un produit");
-            setIsVisible(true);
-          },
-          className: activeTab === "addProduct" ? "tab-select" : ""
-        },
-        {
-          id: "editProduct",
-          Icon: <FaPen className="icon" />,
-          inputValue: "Modifier un produit",
-          onClick: () => {
-            setActiveTab("editProduct");
-            setDescription("Modifier un produit");
-            setIsVisible(true);
-          },
-          className: activeTab === "editProduct" ? "tab-select" : ""
-        }
-      ];
-
+    
 
 if (!isChecked) return null;
   return (
 
    <PanelAdminStyled>
       <div className="onglets">
-        {tabs.map((tab) => (
-          <TabAdmin
+        <AdminTab
+          key={"toggle"}
+          Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />}
+          onClick={() => setIsVisible(!isVisible)}
+          className={isVisible ? "tab-select" : ""}
+        />
+
+        {tabsConfig.map((tab) => (
+          <AdminTab
             key={tab.id}
             Icon={tab.Icon}
             inputValue={tab.inputValue}
-            onClick={tab.onClick}
-            className={tab.className} // Pass className here
+            onClick={ () => {
+              setActiveTab(tab.id);
+              setIsVisible(true);
+              }
+            }
+            className= {activeTab === tab.id ? "tab-select" : ""}
           />
         ))}
       </div>
       {isVisible && (
 
         <div className="description">
-          <AddProductPanel>{description}</AddProductPanel>
+          <AddProductPanel></AddProductPanel>
         </div>
       )}
     </PanelAdminStyled>

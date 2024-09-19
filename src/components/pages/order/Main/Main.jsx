@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import "../../../../fakeData/fakeMenu"
 import Menu from "./Menu";
-import PanelAdmin from "../PanelAdmin/PanelAdmin";
+import AdminPanel from "../Admin/AdminPanel";
 import { useState } from "react";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import MenusContext from "../../../../contexts/MenusContext";
@@ -22,7 +22,7 @@ export default function Main() {
         ) : (
           <EmptyMenu />
         )}      
-        <PanelAdmin/>
+        <AdminPanel/>
       </MainStyled>
     </MenusContext.Provider>
   )
