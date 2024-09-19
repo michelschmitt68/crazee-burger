@@ -12,15 +12,16 @@ import EmptyMenu from "./EmptyMenu";
 export default function Main() {
 
   const [menus, setMenus] = useState(fakeMenu2)
+  console.log(menus.length);
 
   return (
     <MenusContext.Provider value={{menus, setMenus}}>
       <MainStyled className="main">
         {/* <div className="basket"></div> */}
         {menus.length === 0 ? (
-          <Menu />
-        ) : (
           <EmptyMenu />
+        ) : (
+          <Menu />
         )}      
         <AdminPanel/>
       </MainStyled>

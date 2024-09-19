@@ -51,7 +51,13 @@ const AddProductPanel = () => {
 
   return (
     <AddProductPanelStyled action="submit" onSubmit={handleSubmit}>
-        <div className="image-add">Aucune Image</div>
+        <div className="image-add">
+            {imageInputValue ? ( 
+                <img alt={"a"} src={imageInputValue} />
+            ) : (
+                <p>Aucune image</p>
+            )}
+        </div>
         <div className="inputs">
             <InputText
                 type={"text"}
@@ -106,6 +112,12 @@ const AddProductPanelStyled = styled.form`
         border: 1px solid ${theme.colors.greyLight};
         width: 215px;
         height: 120px;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     .inputs{
@@ -136,6 +148,12 @@ const AddProductPanelStyled = styled.form`
             border: none;
             width: 275px;
             padding: 10px 29px;
+        
+        &:hover{
+            background-color: white;
+            color: #60BD4F;
+            border-color: #60BD4F;
         }
+    }
 
 `;
