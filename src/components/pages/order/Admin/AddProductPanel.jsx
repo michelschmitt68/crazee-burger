@@ -6,54 +6,56 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
-import MenusContext from "../../../../contexts/MenusContext";
-import { toast } from "react-toastify";
+import OrderContext from "../../../../contexts/OrderContext";
+import { FiCheck } from "react-icons/fi";
+
 
 
 const AddProductPanel = () => {
 
-    const [nameInputValue, setNameInputValue] = useState("");
-    const [imageInputValue, setImageInputValue] = useState("");
-    const [priceInputValue, setPriceInputValue] = useState("");
+    const EMPTY_PRODUCT = {
+        id:"",
+        title:"",
+        imageSource:"",
+        price: 0
+    }
+
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     //Context
-    const{menus, setMenus} = useContext(MenusContext);
+    const{handleAdd} = useContext(OrderContext);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        const newValue = name === "price" ? parseFloat(value) || 0 : value;
+    
+        setNewProduct((prevState) => ({
+            ...prevState, 
+            [name]: newValue 
+        }));
+    };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const newMenu = {
-            id: menus.length + 1,
-            imageSource: imageInputValue === "" ? "/images/coming-soon.png" : imageInputValue, 
-            title: nameInputValue,
-            price: priceInputValue === "" ? 0 : parseFloat(priceInputValue),
-            quantity: 0,
-            isAvailable: true,
-            isAdvertised: false,
-        };
-
-        setMenus([...menus, newMenu]);
-
-        toast.info("Ajouté avec succès !", {
-            theme: "dark",
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
         
-        setNameInputValue("");
-        setImageInputValue("");
-        setPriceInputValue("");
+        event.preventDefault();
+        const newProductToAdd = {
+            ...newProduct,
+            id: crypto.randomUUID()
+        };
+        console.log("aaaaaaaa",newProduct)
+        console.log("bbbbbbbb",newProductToAdd)
+        handleAdd(newProductToAdd);
+        setNewProduct(EMPTY_PRODUCT);
+        setIsSubmitted(true);
+        setTimeout(() => {setIsSubmitted(false)}, 2000)
     }
 
   return (
     <AddProductPanelStyled action="submit" onSubmit={handleSubmit}>
         <div className="image-add">
-            {imageInputValue ? ( 
-                <img alt={"a"} src={imageInputValue} />
+            {newProduct.imageSource ? ( 
+                <img alt={""} src={newProduct.imageSource} />
             ) : (
                 <p>Aucune image</p>
             )}
@@ -62,35 +64,44 @@ const AddProductPanel = () => {
             <InputText
                 type={"text"}
                 required={false}
+                name="title"
                 Icon={<FaHamburger/>}
                 placeholder={"Nom du produit (ex: Super Burger)"}
                 className={"input-panel-admin"}
-                inputValue={nameInputValue}
-                onChange={(event) => {setNameInputValue(event.target.value)}}
+                value={newProduct.title}
+                onChange={handleChange}
             />
             <InputText
                 type={"text"}
-                equired={false}
+                required={false}
+                name="imageSource"
                 Icon={<BsFillCameraFill/>}
                 placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}
                 className={"input-panel-admin"}
-                inputValue={imageInputValue}
-                onChange={(event) => {setImageInputValue(event.target.value)}}
+                value={newProduct.imageSource}
+                onChange={handleChange}
             />
             <InputText
                 type={"number"}
                 required={false}
+                name="price"
                 Icon={<MdOutlineEuro/>}
                 placeholder={"Prix"}
                 className={"input-panel-admin"}
-                inputValue={priceInputValue}
-                onChange={(event) => {setPriceInputValue(event.target.value)}}
+                value={newProduct.price}
+                onChange={handleChange}
             />
 
-            <ButtonPrimary
-                label={"Ajouter un nouveau produit"}
-                className={"button-add-product"}
-            />
+            <div className="end">
+                <ButtonPrimary
+                    label={"Ajouter un nouveau produit"}
+                    className={"button-add-product"}
+                />
+                {isSubmitted && <div className="end">
+                    <FiCheck className="icon" />
+                    <span>Ajouté avec succès !</span>
+                    </div>}
+            </div>
         </div>
     </AddProductPanelStyled>
   )
@@ -155,5 +166,25 @@ const AddProductPanelStyled = styled.form`
             border-color: #60BD4F;
         }
     }
+
+.end {
+    display: flex;
+    align-items: center; 
+    vertical-align: middle; 
+    color: #60BD4F;
+    gap: 5px;
+
+
+    span {     
+        font-size: ${theme.fonts.P0}; 
+    }
+
+    .icon {
+        border: solid 1px #60BD4F; 
+        border-radius: ${theme.borderRadius.extraRound}; 
+        font-size: ${theme.fonts.P1};
+        margin-left: 15px;
+    }
+}
 
 `;

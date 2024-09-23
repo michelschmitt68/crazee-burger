@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import PropTypes from 'prop-types';
 import { useContext } from "react";
-import AdminContext from "../../../../contexts/AdminContext";
+import OrderContext from "../../../../contexts/OrderContext";
 
 const ToggleButton = ({
   labelIfChecked,
   labelIfUnchecked
 }) => {
 
-  const {isChecked, handleToggle} = useContext(AdminContext);
+  const {isChecked, handleToggle} = useContext(OrderContext);
 
   return (
     <ToggleButtonStyled>

@@ -3,19 +3,17 @@ import { theme } from "../../../../theme";
 import "../../../../fakeData/fakeMenu"
 import Menu from "./Menu";
 import AdminPanel from "../Admin/AdminPanel";
-import { useState } from "react";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import MenusContext from "../../../../contexts/MenusContext";
 import EmptyMenu from "./EmptyMenu";
+import { useContext } from "react";
+import OrderContext from '../../../../contexts/OrderContext';
+
 
 
 export default function Main() {
 
-  const [menus, setMenus] = useState(fakeMenu2)
-  console.log(menus.length);
+  const {menus} = useContext(OrderContext);
 
   return (
-    <MenusContext.Provider value={{menus, setMenus}}>
       <MainStyled className="main">
         {/* <div className="basket"></div> */}
         {menus.length === 0 ? (
@@ -25,7 +23,7 @@ export default function Main() {
         )}      
         <AdminPanel/>
       </MainStyled>
-    </MenusContext.Provider>
+
   )
 }
 

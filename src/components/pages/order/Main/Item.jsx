@@ -3,19 +3,13 @@ import styled from 'styled-components';
 import { theme } from '../../../../theme';
 import PrimaryButton from '../../../reusableUI/ButtonPrimary';
 import { TiDelete } from 'react-icons/ti';
-import AdminContext from '../../../../contexts/AdminContext';
 import { useContext } from 'react';
-import MenusContext from '../../../../contexts/MenusContext';
+import OrderContext from '../../../../contexts/OrderContext';
 
-const Item = ({ title, imageSource, price }) => {
+const Item = ({ title, imageSource, price, onDelete }) => {
 
   // context
-  const { isChecked } = useContext(AdminContext);
-  const { setMenus } = useContext(MenusContext);
-  
-  const handleClickDelete = () => {
-    setMenus(prevMenus => prevMenus.filter(menu => menu.title !== title));
-  };
+  const {isChecked} = useContext(OrderContext);
 
   return (
     <ItemStyled className="produit">
@@ -23,7 +17,7 @@ const Item = ({ title, imageSource, price }) => {
         <PrimaryButton 
           Icon={<TiDelete className="icon" />}
           className={"delete-menu-button"}
-          onClick={() => handleClickDelete()} // Corrigé ici
+          onClick={onDelete} 
         />
       )}
       <div className="image">
@@ -45,10 +39,11 @@ const Item = ({ title, imageSource, price }) => {
 export default Item;
 
 Item.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  imageSource: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  id: PropTypes.number,
+  title: PropTypes.string,
+  imageSource: PropTypes.string,
+  price: PropTypes.number,
+  onDelete: PropTypes.func
 };
 
 const ItemStyled = styled.div`

@@ -3,7 +3,7 @@ import { theme } from "../../../../theme";
 import AdminTab from "./AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useContext, useState } from "react";
-import AdminContext from "../../../../contexts/AdminContext";
+import AdminContext from "../../../../contexts/OrderContext";
 import AddProductPanel from "./AddProductPanel";
 import tabsConfig from "./tabsConfig";
 

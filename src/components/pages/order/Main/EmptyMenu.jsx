@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
 import { theme } from "../../../../theme";
 import { useContext } from "react";
-import AdminContext from "../../../../contexts/AdminContext";
+import AdminContext from "../../../../contexts/OrderContext";
 
 
 const EmptyMenu = () => {

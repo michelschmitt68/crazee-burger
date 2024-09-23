@@ -5,11 +5,13 @@ import styled from "styled-components";
 import { theme } from "../../../theme";
 import { useState } from "react";
 import { toast} from 'react-toastify';
-import AdminContext from "../../../contexts/AdminContext";
+import OrderContext from "../../../contexts/OrderContext";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 
 const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
+  const [menus, setMenus] = useState(fakeMenu2);
 
   const handleToggle = () => {
 
@@ -28,15 +30,23 @@ const OrderPage = () => {
     }
   };
 
+  const handleDelete = (id) => {
+    setMenus(prevMenus => prevMenus.filter(menu => menu.id !== id));
+  }
+
+  const handleAdd = (newMenu) => {
+    setMenus([...menus, newMenu]);
+  }
+
   return (
-    <AdminContext.Provider value={{isChecked, handleToggle}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
-    </AdminContext.Provider>
+    </OrderContext.Provider>
   )
 }
 
