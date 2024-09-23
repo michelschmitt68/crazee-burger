@@ -61,9 +61,9 @@ const AddProductPanel = () => {
                 name="title"
                 Icon={<FaHamburger/>}
                 placeholder={"Nom du produit (ex: Super Burger)"}
-                className={"input-panel-admin"}
                 value={newProduct.title}
                 onChange={handleChange}
+                version={"normal"}
             />
             <InputText
                 type={"text"}
@@ -71,9 +71,9 @@ const AddProductPanel = () => {
                 name="imageSource"
                 Icon={<BsFillCameraFill/>}
                 placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}
-                className={"input-panel-admin"}
                 value={newProduct.imageSource}
                 onChange={handleChange}
+                version={"normal"}
             />
             <InputText
                 type={"number"}
@@ -81,15 +81,15 @@ const AddProductPanel = () => {
                 name="price"
                 Icon={<MdOutlineEuro/>}
                 placeholder={"Prix"}
-                className={"input-panel-admin"}
                 value={newProduct.price}
                 onChange={handleChange}
+                version={"normal"}
             />
 
             <div className="end">
                 <ButtonPrimary
                     label={"Ajouter un nouveau produit"}
-                    className={"button-add-product"}
+                    version={"green-button"}
                 />
                 {isSubmitted && <div className="end">
                     <FiCheck className="icon" />
@@ -131,54 +131,24 @@ const AddProductPanelStyled = styled.form`
         height: 121px;
         flex-direction: column;
         gap: 8px;
+    }
 
-        .input-panel-admin{
-            height: 35px;
-            padding: 10px 20px;
-            margin: 0px;
-            gap: 20px;
-            background-color: ${theme.colors.background_white};
-            color: ${theme.colors.greyDark};
+    .end {
+        display: flex;
+        align-items: center; 
+        vertical-align: middle; 
+        color: #60BD4F;
+        gap: 5px;
 
-            input{
-                background-color: ${theme.colors.background_white};
-                &::placeholder{
-                    background-color: ${theme.colors.background_white};
-                }
-            }
-        }}
-
-        .button-add-product{
-            background-color: #60BD4F;
-            border: none;
-            width: 275px;
-            padding: 10px 29px;
-        
-        &:hover{
-            background-color: white;
-            color: #60BD4F;
-            border-color: #60BD4F;
+        span {     
+            font-size: ${theme.fonts.P0}; 
         }
-    }
-
-.end {
-    display: flex;
-    align-items: center; 
-    vertical-align: middle; 
-    color: #60BD4F;
-    gap: 5px;
-
-
-    span {     
-        font-size: ${theme.fonts.P0}; 
-    }
-
-    .icon {
-        border: solid 1px #60BD4F; 
-        border-radius: ${theme.borderRadius.extraRound}; 
-        font-size: ${theme.fonts.P1};
-        margin-left: 15px;
-    }
+        .icon {
+            border: solid 1px #60BD4F; 
+            border-radius: ${theme.borderRadius.extraRound}; 
+            font-size: ${theme.fonts.P1};
+            margin-left: 15px;
+        }
 }
 
 `;

@@ -16,7 +16,7 @@ const Item = ({ title, imageSource, price, onDelete }) => {
       {isChecked && (
         <PrimaryButton 
           Icon={<TiDelete className="icon" />}
-          className={"delete-menu-button"}
+          version={"minimalist"}
           onClick={onDelete} 
         />
       )}
@@ -57,29 +57,6 @@ const ItemStyled = styled.div`
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
-
-  .delete-menu-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 0;
-    margin: 0;
-    width: 30px;
-    background-color: ${theme.colors.white};
-    border: none;
-    color: ${theme.colors.primary};
-    cursor: pointer;
-    &:hover:not(:disabled) {
-      border: none;
-    }
-    .icon {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      font-size: 20px;
-      padding: 0px;
-    }
-  }
 
   .image {
     width: 100%;

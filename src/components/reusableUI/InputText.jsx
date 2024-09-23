@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 
 
-const InputText = ({type, required, inputValue, onChange, placeholder, Icon, className, name}) => {
+const InputText = ({type, required, inputValue, onChange, placeholder, Icon, className, name, version}) => {
   return (
-    <InputStyled className={className}>
+    <InputStyled className={className} version={version}>
       {Icon && Icon}
       <input
         type={type}
@@ -27,7 +27,8 @@ InputText.propTypes = {
   placeholder: PropTypes.string,
   Icon: PropTypes.element,
   className: PropTypes.string,
-  name: PropTypes.string         
+  name: PropTypes.string,
+  version: PropTypes.string         
 };
 
 export default InputText;
@@ -59,4 +60,23 @@ const InputStyled = styled.div`
         margin-right: 8px;
     }
 
+    ${(props) => props.version === "normal" && extraStyleNormal}
+    ${(props) => console.log(props.version)}
+
 `;
+
+const extraStyleNormal = css`
+  height: 35px;
+  padding: 10px 20px;
+  margin: 0px;
+  gap: 20px;
+  background-color: ${theme.colors.background_white};
+  color: ${theme.colors.greyDark};
+
+  input{
+    background-color: ${theme.colors.background_white};
+    &::placeholder{
+      background-color: ${theme.colors.background_white};
+    }
+  }
+`

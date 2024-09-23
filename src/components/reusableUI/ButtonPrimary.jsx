@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import PropTypes from 'prop-types';
 
-export default function ButtonPrimary({label, Icon, className, onClick}) {
+export default function ButtonPrimary({label, Icon, className, onClick, version}) {
 
   return (
     
     <ButtonPrimaryStyled 
-        className={className}
+        version={version}
         onClick={onClick}
     >
         {label}
@@ -69,4 +69,43 @@ const ButtonPrimaryStyled = styled.button`
         font-weight: ${theme.weights.bold};
 
     }
+
+    ${(props) => props.version === "green-button" && greenButton}
+    ${(props) => props.version === "minimalist" && minimalist}
 `;
+
+const greenButton = css`
+    background-color: #60BD4F;
+    border: none;
+    width: 275px;
+    padding: 10px 29px;
+        
+    &:hover{
+        background-color: white;
+        color: #60BD4F;
+        border-color: #60BD4F;
+    }
+`
+
+const minimalist = css`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    background-color: ${theme.colors.white};
+    border: none;
+    color: ${theme.colors.primary};
+    cursor: pointer;
+    &:hover:not(:disabled) {
+      border: none;
+    }
+    .icon {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-size: 20px;
+      padding: 0px;
+    }
+`
