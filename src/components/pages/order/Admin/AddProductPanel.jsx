@@ -19,32 +19,26 @@ const AddProductPanel = () => {
         imageSource:"",
         price: 0
     }
-
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [isSubmitted, setIsSubmitted] = useState(false);
-
-    //Context
     const{handleAdd} = useContext(OrderContext);
+
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         const newValue = name === "price" ? parseFloat(value) || 0 : value;
-    
         setNewProduct((prevState) => ({
             ...prevState, 
             [name]: newValue 
         }));
     };
 
-    const handleSubmit = (event) => {
-        
+    const handleSubmit = (event) => { 
         event.preventDefault();
         const newProductToAdd = {
             ...newProduct,
             id: crypto.randomUUID()
         };
-        console.log("aaaaaaaa",newProduct)
-        console.log("bbbbbbbb",newProductToAdd)
         handleAdd(newProductToAdd);
         setNewProduct(EMPTY_PRODUCT);
         setIsSubmitted(true);

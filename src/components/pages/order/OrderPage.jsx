@@ -38,8 +38,12 @@ const OrderPage = () => {
     setMenus([...menus, newMenu]);
   }
 
+  const resetMenus = () => {
+    setMenus(fakeMenu2);
+  }
+
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

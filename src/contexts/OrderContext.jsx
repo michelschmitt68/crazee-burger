@@ -9,6 +9,7 @@ const AdminContext = React.createContext({
   //menus
   menus: [],
   setMenus: () => {},
+  resetMenus: () => {},
   handleAdd: () => {},
   handleDelete: () => {}
 });

@@ -8,7 +8,7 @@ import AdminContext from "../../../../contexts/OrderContext";
 const EmptyMenu = () => {
 
     //useContext
-    const {isChecked} = useContext(AdminContext);
+    const {isChecked, resetMenus} = useContext(AdminContext);
 
   return (
     <EmptyMenuStyled>
@@ -18,6 +18,7 @@ const EmptyMenu = () => {
         <h2>CLIQUEZ CI-DESSOUS POUR LE RÉINITIALISER</h2>
         <ButtonPrimary 
             label={"Générer de nouveaux produits"}
+            onClick={resetMenus}
         />
         </>
     ) : (
