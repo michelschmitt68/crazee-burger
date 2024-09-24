@@ -10,6 +10,7 @@ import OrderContext from "../../../../contexts/OrderContext";
 import { FiCheck } from "react-icons/fi";
 import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 
 const AddProductPanel = () => {
@@ -75,15 +76,12 @@ const AddProductPanel = () => {
                 version={"normal"}
             />
 
-            <div className="end">
+            <div className="submit">
                 <ButtonPrimary
                     label={"Ajouter un nouveau produit"}
                     version={"green-button"}
                 />
-                {isSubmitted && <div className="end">
-                    <FiCheck className="icon" />
-                    <span>Ajouté avec succès !</span>
-                    </div>}
+                {isSubmitted && <SubmitMessage />}
             </div>
         </div>
     </AddProductPanelStyled>
@@ -106,22 +104,8 @@ const AddProductPanelStyled = styled.form`
         gap: 8px;
     }
 
-    .end {
+    .submit{
         display: flex;
-        align-items: center; 
-        vertical-align: middle; 
-        color: #60BD4F;
-        gap: 5px;
-
-        span {     
-            font-size: ${theme.fonts.P0}; 
-        }
-        .icon {
-            border: solid 1px #60BD4F; 
-            border-radius: ${theme.borderRadius.extraRound}; 
-            font-size: ${theme.fonts.P1};
-            margin-left: 15px;
-        }
-}
+    }
 
 `;

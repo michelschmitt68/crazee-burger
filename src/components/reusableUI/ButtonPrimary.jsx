@@ -75,15 +75,23 @@ const ButtonPrimaryStyled = styled.button`
 `;
 
 const greenButton = css`
-    background-color: #60BD4F;
+    background-color: ${theme.colors.success};
     border: none;
     width: 275px;
     padding: 10px 29px;
-        
-    &:hover{
+
+    &:active{
         background-color: white;
-        color: #60BD4F;
-        border-color: #60BD4F;
+        color: ${theme.colors.success};
+        border-color: ${theme.colors.success};
+    }
+
+    &:hover:not(:disabled){
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.success};
+        border: 1px solid ${theme.colors.success};
+        transition: all 200ms ease-out;
+        cursor: pointer;
     }
 `
 
