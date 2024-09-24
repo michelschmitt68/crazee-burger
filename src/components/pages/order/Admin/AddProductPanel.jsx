@@ -8,22 +8,14 @@ import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
 import { FiCheck } from "react-icons/fi";
-
+import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
+import ImagePreview from "./ImagePreview";
 
 
 const AddProductPanel = () => {
 
-    const EMPTY_PRODUCT = {
-        id:"",
-        title:"",
-        imageSource:"",
-        price: 0
-    }
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const{handleAdd} = useContext(OrderContext);
-
-
+    const{handleAdd, newProduct, setNewProduct} = useContext(OrderContext);
     const handleChange = (event) => {
         const { name, value } = event.target;
         const newValue = name === "price" ? parseFloat(value) || 0 : value;
@@ -32,7 +24,7 @@ const AddProductPanel = () => {
             [name]: newValue 
         }));
     };
-
+    
     const handleSubmit = (event) => { 
         event.preventDefault();
         const newProductToAdd = {
@@ -47,13 +39,10 @@ const AddProductPanel = () => {
 
   return (
     <AddProductPanelStyled action="submit" onSubmit={handleSubmit}>
-        <div className="image-add">
-            {newProduct.imageSource ? ( 
-                <img alt={""} src={newProduct.imageSource} />
-            ) : (
-                <p>Aucune image</p>
-            )}
-        </div>
+        <ImagePreview
+            imageSource={newProduct.imageSource}
+            title={newProduct.title}
+        />
         <div className="inputs">
             <InputText
                 type={"text"}

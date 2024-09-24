@@ -1,3 +1,10 @@
+export const EMPTY_PRODUCT = {
+  id:"",
+  title:"",
+  imageSource:"",
+  price: 0
+}
+
 export const fakeMenu1 = [
   {
     id: 1,

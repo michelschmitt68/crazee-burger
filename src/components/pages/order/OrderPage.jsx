@@ -6,12 +6,14 @@ import { theme } from "../../../theme";
 import { useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT, fakeMenu2 } from "../../../fakeData/fakeMenu";
+
 
 const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [menus, setMenus] = useState(fakeMenu2);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleToggle = () => {
 
@@ -43,7 +45,7 @@ const OrderPage = () => {
   }
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus, newProduct, setNewProduct}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

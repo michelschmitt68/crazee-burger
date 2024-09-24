@@ -11,7 +11,9 @@ const AdminContext = React.createContext({
   setMenus: () => {},
   resetMenus: () => {},
   handleAdd: () => {},
-  handleDelete: () => {}
+  handleDelete: () => {},
+  newProduct: {},
+  setNewProduct: () => {}
 });
 
 export default AdminContext;
