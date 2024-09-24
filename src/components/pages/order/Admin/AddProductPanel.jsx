@@ -98,22 +98,6 @@ const AddProductPanelStyled = styled.form`
     gap: 20px;
 
 
-    .image-add{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: ${theme.colors.greySemiDark};
-        border: 1px solid ${theme.colors.greyLight};
-        width: 215px;
-        height: 120px;
-
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
-
     .inputs{
         display: flex;
         width: 645px;
