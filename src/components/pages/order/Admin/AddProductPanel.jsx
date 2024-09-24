@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme";
 import InputText from "../../../reusableUI/InputText";
 import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
-import { FaHamburger } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
-import { FiCheck } from "react-icons/fi";
 import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import { getInputTextConfig } from "./inputTextsConfig";
 
 
 const AddProductPanel = () => {
@@ -38,6 +34,8 @@ const AddProductPanel = () => {
         setTimeout(() => {setIsSubmitted(false)}, 2000)
     }
 
+    const inputTexts = getInputTextConfig(newProduct);
+
   return (
     <AddProductPanelStyled action="submit" onSubmit={handleSubmit}>
         <ImagePreview
@@ -45,36 +43,19 @@ const AddProductPanel = () => {
             title={newProduct.title}
         />
         <div className="inputs">
-            <InputText
-                type={"text"}
-                required={false}
-                name="title"
-                Icon={<FaHamburger/>}
-                placeholder={"Nom du produit (ex: Super Burger)"}
-                value={newProduct.title}
-                onChange={handleChange}
-                version={"normal"}
-            />
-            <InputText
-                type={"text"}
-                required={false}
-                name="imageSource"
-                Icon={<BsFillCameraFill/>}
-                placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}
-                value={newProduct.imageSource}
-                onChange={handleChange}
-                version={"normal"}
-            />
-            <InputText
-                type={"number"}
-                required={false}
-                name="price"
-                Icon={<MdOutlineEuro/>}
-                placeholder={"Prix"}
-                value={newProduct.price}
-                onChange={handleChange}
-                version={"normal"}
-            />
+            {inputTexts.map((input, index) => (
+                <InputText
+                    key={index} 
+                    type={input.type}
+                    required={false}
+                    name={input.name}
+                    Icon={input.Icon}
+                    placeholder={input.placeholder}
+                    value={input.value}
+                    onChange={handleChange}
+                    version={"normal"}
+                />
+            ))}
 
             <div className="submit">
                 <ButtonPrimary
