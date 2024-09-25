@@ -16,7 +16,6 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleToggle = () => {
-
     setIsChecked(!isChecked);
     if (!isChecked) {
       toast.info("Mode admin activé", {

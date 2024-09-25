@@ -2,7 +2,9 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 
-export const getInputTextConfig = (newProduct) => [
+export const getInputTextConfig = (newProduct) => {
+
+   return [
     {
         type:"text",
         name:"title",
@@ -18,10 +20,13 @@ export const getInputTextConfig = (newProduct) => [
         value: newProduct.imageSource
     },
     {
-        type:"text",
+        type:"number",
         name:"price",
         Icon:<MdOutlineEuro/>,
         placeholder:"Prix",
         value: newProduct.price
     }
-]
+    
+]}
+
+

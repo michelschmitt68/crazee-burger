@@ -61,7 +61,6 @@ const InputStyled = styled.div`
     }
 
     ${(props) => props.version === "normal" && extraStyleNormal}
-    ${(props) => console.log(props.version)}
 
 `;
 

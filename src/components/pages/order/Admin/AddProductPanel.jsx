@@ -3,10 +3,10 @@ import InputText from "../../../reusableUI/InputText";
 import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
-import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./inputTextsConfig";
+import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
 
 
 const AddProductPanel = () => {
@@ -18,7 +18,7 @@ const AddProductPanel = () => {
         const newValue = name === "price" ? parseFloat(value) || 0 : value;
         setNewProduct((prevState) => ({
             ...prevState, 
-            [name]: newValue 
+            [name]: newValue,
         }));
     };
     
@@ -29,9 +29,9 @@ const AddProductPanel = () => {
             id: crypto.randomUUID()
         };
         handleAdd(newProductToAdd);
-        setNewProduct(EMPTY_PRODUCT);
         setIsSubmitted(true);
-        setTimeout(() => {setIsSubmitted(false)}, 2000)
+        setTimeout(() => {setIsSubmitted(false)}, 2000);
+        setNewProduct(EMPTY_PRODUCT);
     }
 
     const inputTexts = getInputTextConfig(newProduct);
@@ -51,7 +51,7 @@ const AddProductPanel = () => {
                     name={input.name}
                     Icon={input.Icon}
                     placeholder={input.placeholder}
-                    value={input.value}
+                    inputValue={input.value}
                     onChange={handleChange}
                     version={"normal"}
                 />
