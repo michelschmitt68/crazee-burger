@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import AdminTab from "./AdminTab";
+import AdminTab from "./AdminTab/AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useContext, useState } from "react";
 import AdminContext from "../../../../contexts/OrderContext";
-import AddProductPanel from "./AddProductPanel";
-import tabsConfig from "./tabsConfig";
+import AddProductPanel from "./AddProduct/AddProductPanel";
+import tabsConfig from "./AdminTab/tabsConfig";
+import EditProductPanel from "./UpdateProduct/EditProductPanel";
 
 
 
@@ -44,9 +45,9 @@ if (!isChecked) return null;
         ))}
       </div>
       {isVisible && (
-
         <div className="description">
-          <AddProductPanel></AddProductPanel>
+          {activeTab === "addProduct" && <AddProductPanel />}
+          {activeTab === "editProduct" && <EditProductPanel />}
         </div>
       )}
     </PanelAdminStyled>
