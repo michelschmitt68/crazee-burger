@@ -7,13 +7,11 @@ import { useContext } from 'react';
 import OrderContext from '../../../../contexts/OrderContext';
 import defaultImage from "/images/coming-soon.png";
 
-
 const Item = ({ title, imageSource, price, onDelete }) => {
-  
-  const {isChecked} = useContext(OrderContext);
+  const { isChecked } = useContext(OrderContext);
 
   return (
-    <ItemStyled className="produit">
+    <ItemStyled className="produit" $isChecked={isChecked}>
       {isChecked && (
         <PrimaryButton 
           Icon={<TiDelete className="icon" />}
@@ -22,10 +20,10 @@ const Item = ({ title, imageSource, price, onDelete }) => {
         />
       )}
       <div className="image">
-        
         <img 
           src={imageSource ? imageSource : defaultImage} 
-          alt={title} />
+          alt={title} 
+        />
       </div>
       <div className="text-info">
         <div className="title">{title}</div>
@@ -40,14 +38,11 @@ const Item = ({ title, imageSource, price, onDelete }) => {
   );
 };
 
-export default Item;
-
 Item.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   imageSource: PropTypes.string,
-  price: PropTypes.number,
-  onDelete: PropTypes.func
+  price: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 const ItemStyled = styled.div`
@@ -61,6 +56,33 @@ const ItemStyled = styled.div`
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+
+  ${({ $isChecked }) =>
+    $isChecked &&
+    `
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: ${theme.shadows.light} ${theme.colors.orangeHighlight};
+      }
+
+      &:active, &:focus {
+        background-color: ${theme.colors.primary};
+
+        button {
+          background-color: ${theme.colors.white};
+          color: ${theme.colors.primary};
+        }
+
+        .icon {
+          background-color: ${theme.colors.primary};
+          color: ${theme.colors.white};
+        }
+
+        .description .left-description {
+          color: ${theme.colors.white} !important; 
+        }
+      }
+    `}
 
   .image {
     width: 100%;
@@ -127,3 +149,5 @@ const ItemStyled = styled.div`
     }
   }
 `;
+
+export default Item;
