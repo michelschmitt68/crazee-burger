@@ -2,12 +2,30 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
 import PrimaryButton from '../../../reusableUI/ButtonPrimary';
+import { TiDelete } from 'react-icons/ti';
+import { useContext } from 'react';
+import OrderContext from '../../../../contexts/OrderContext';
+import defaultImage from "/images/coming-soon.png";
 
-const Item = ({title, imageSource, price}) => {
+
+const Item = ({ title, imageSource, price, onDelete }) => {
+  
+  const {isChecked} = useContext(OrderContext);
+
   return (
     <ItemStyled className="produit">
+      {isChecked && (
+        <PrimaryButton 
+          Icon={<TiDelete className="icon" />}
+          version={"minimalist"}
+          onClick={onDelete} 
+        />
+      )}
       <div className="image">
-        <img src={imageSource} alt={title} />
+        
+        <img 
+          src={imageSource ? imageSource : defaultImage} 
+          alt={title} />
       </div>
       <div className="text-info">
         <div className="title">{title}</div>
@@ -19,19 +37,20 @@ const Item = ({title, imageSource, price}) => {
         </div>
       </div>
     </ItemStyled>
-  )
-}
+  );
+};
 
 export default Item;
 
-Item.propTypes= {
-    title: PropTypes.string,
-    imageSource: PropTypes.string,
-    price: PropTypes.number
-  }
+Item.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  imageSource: PropTypes.string,
+  price: PropTypes.number,
+  onDelete: PropTypes.func
+};
 
-
-  const ItemStyled = styled.div`
+const ItemStyled = styled.div`
   background: ${theme.colors.white};
   width: 240px;
   height: 330px;
@@ -41,6 +60,7 @@ Item.propTypes= {
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
 
   .image {
     width: 100%;
@@ -102,9 +122,8 @@ Item.propTypes= {
           padding: 12px;
           height: 38px;
           width: 95px;
-          ;
         }
       }
     }
   }
-`
+`;

@@ -1,27 +1,29 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import Item from "./Item";
-import { useState } from "react";
+import { useContext } from "react";
 import { theme } from "../../../../theme";
+import OrderContext from "../../../../contexts/OrderContext";
 
 const Menu = () => {
+  //Context
+  const { menus, handleDelete } = useContext(OrderContext);
 
-  const [menu, setmenu] = useState(fakeMenu2)
   return (
     <MenuStyled className="menu">
-        {menu.map(({id, title, imageSource, price}) => (
-          <Item 
-            key={id}
-            title={title}
-            imageSource={imageSource}
-            price={price}
-          />
-        ))}      
+      {menus.map(({ id, title, imageSource, price }) => (
+        <Item 
+          key={id}
+          title={title}
+          imageSource={imageSource}
+          price={price}
+          onDelete={() => handleDelete(id)}
+        />
+      ))}      
     </MenuStyled>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};

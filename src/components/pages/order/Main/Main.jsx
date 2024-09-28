@@ -2,22 +2,34 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import "../../../../fakeData/fakeMenu"
 import Menu from "./Menu";
-import PanelAdmin from "../PanelAdmin/PanelAdmin";
+import AdminPanel from "../Admin/AdminPanel";
+import EmptyMenu from "./EmptyMenu";
+import { useContext } from "react";
+import OrderContext from '../../../../contexts/OrderContext';
+
 
 
 export default function Main() {
+
+  const {menus} = useContext(OrderContext);
+
   return (
-    <MainStyled className="main">
-      {/* <div className="basket"></div> */}
-      <Menu />
-      <PanelAdmin/>
-    </MainStyled>
+      <MainStyled className="main">
+        {/* <div className="basket"></div> */}
+        {menus.length === 0 ? (
+          <EmptyMenu />
+        ) : (
+          <Menu />
+        )}      
+        <AdminPanel/>
+      </MainStyled>
+
   )
 }
 
 const MainStyled = styled.div`
   background: ${theme.colors.background_white};
-  flex: 1; // or you can also use this : height: calc(95vh - 10vh);
+  flex: 1; 
 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
