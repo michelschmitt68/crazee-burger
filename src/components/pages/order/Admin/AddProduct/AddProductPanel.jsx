@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import InputText from "../../../reusableUI/InputText";
-import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
+import InputText from "../../../../reusableUI/InputText";
+import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
 import { useContext, useState } from "react";
-import OrderContext from "../../../../contexts/OrderContext";
+import OrderContext from "../../../../../contexts/OrderContext";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./inputTextsConfig";
-import { EMPTY_PRODUCT } from "../../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../../../fakeData/fakeMenu";
 
 
 const AddProductPanel = () => {
