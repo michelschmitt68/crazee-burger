@@ -5,10 +5,11 @@ import PrimaryButton from '../../../reusableUI/ButtonPrimary';
 import { TiDelete } from 'react-icons/ti';
 import { useContext } from 'react';
 import OrderContext from '../../../../contexts/OrderContext';
+import defaultImage from "/images/coming-soon.png";
+
 
 const Item = ({ title, imageSource, price, onDelete }) => {
-
-  // context
+  
   const {isChecked} = useContext(OrderContext);
 
   return (
@@ -21,7 +22,10 @@ const Item = ({ title, imageSource, price, onDelete }) => {
         />
       )}
       <div className="image">
-        <img src={imageSource} alt={title} />
+        
+        <img 
+          src={imageSource ? imageSource : defaultImage} 
+          alt={title} />
       </div>
       <div className="text-info">
         <div className="title">{title}</div>
