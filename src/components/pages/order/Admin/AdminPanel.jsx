@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import AdminContext from "../../../../contexts/OrderContext";
 import AddProductPanel from "./AddProduct/AddProductPanel";
 import tabsConfig from "./AdminTab/tabsConfig";
-import EditProductPanel from "./UpdateProduct/EditProductPanel";
+import DefaultEditProduct from "./UpdateProduct/DefaultEditProduct";
 
 
 
@@ -47,7 +47,7 @@ if (!isChecked) return null;
       {isVisible && (
         <div className="description">
           {activeTab === "addProduct" && <AddProductPanel />}
-          {activeTab === "editProduct" && <EditProductPanel />}
+          {activeTab === "editProduct" && <DefaultEditProduct />}
         </div>
       )}
     </PanelAdminStyled>
