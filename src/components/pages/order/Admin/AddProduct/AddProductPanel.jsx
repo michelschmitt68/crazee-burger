@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import InputText from "../../../../reusableUI/InputText";
 import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
@@ -7,6 +6,7 @@ import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./inputTextsConfig";
 import { EMPTY_PRODUCT } from "../../../../../fakeData/fakeMenu";
+import TextInputs from "../../../../reusableUI/TextInputs";
 
 
 const AddProductPanel = () => {
@@ -43,20 +43,10 @@ const AddProductPanel = () => {
             title={newProduct.title}
         />
         <div className="inputs">
-            {inputTexts.map((input, index) => (
-                <InputText
-                    key={index} 
-                    type={input.type}
-                    required={false}
-                    name={input.name}
-                    Icon={input.Icon}
-                    placeholder={input.placeholder}
-                    inputValue={input.value}
-                    onChange={handleChange}
-                    version={"normal"}
-                />
-            ))}
-
+            <TextInputs 
+                inputTexts= {inputTexts}
+                onChange={handleChange}
+            />         
             <div className="submit">
                 <ButtonPrimary
                     label={"Ajouter un nouveau produit"}
