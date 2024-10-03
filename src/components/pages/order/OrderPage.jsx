@@ -14,6 +14,8 @@ const OrderPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [menus, setMenus] = useState(fakeMenu2);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [editedProduct, setEditedProduct] = useState(null);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -39,18 +41,29 @@ const OrderPage = () => {
     setMenus([...menus, newMenu]);
   }
 
+  const handleEdit = (updatedItem) => {
+    setMenus((prevMenus) =>
+      prevMenus.map((menu) =>
+        menu.id === updatedItem.id ? updatedItem : menu
+      )
+    );
+    setSelectedItem(updatedItem);
+  }
+
   const resetMenus = () => {
     setMenus(fakeMenu2);
   }
 
-  const handleSelectItem = ( title, imageSource, price) => {
-    console.log( "title : ", title)
-    console.log( "imageSource : ", imageSource)
-    console.log( "price : ", price)
+  const handleSelectItem = ( id, title, imageSource, price) => {
+    const selected = { id, title, imageSource, price };
+    setSelectedItem(selected);
+    setEditedProduct(selected)
   }
 
+
+
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

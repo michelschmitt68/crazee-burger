@@ -17,7 +17,7 @@ const Menu = () => {
           imageSource={imageSource}
           price={price}
           onDelete={() => handleDelete(id)}
-          onSelect= {() => handleSelectItem(title, imageSource, price)}
+          onSelect= {() => handleSelectItem(id, title, imageSource, price)}
         />
       ))}      
     </MenuStyled>

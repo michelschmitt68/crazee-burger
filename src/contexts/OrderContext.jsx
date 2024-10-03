@@ -3,19 +3,28 @@ import React from 'react';
 const AdminContext = React.createContext({
 
   //toogle admin
-  isChecked: false,
-  handleToggle: () => {},
+   isChecked: false,
+   handleToggle: () => {},
 
   //menus
-  menus: [],
-  setMenus: () => {},
-  resetMenus: () => {},
-  handleAdd: () => {},
-  handleDelete: () => {},
-  newProduct: {},
-  setNewProduct: () => {},
+   menus: [],
+   setMenus: () => {},
+   resetMenus: () => {}, 
+   
+    //select
+     handleSelectItem: () => {},
+     selectedItem: {},
+    //add
+     newProduct: {},
+     setNewProduct: () => {},
+     handleAdd: () => {},
+    //edit
+     editedProduct: {}, 
+     setEditedProduct: () => {} ,
+     handleEdit: () => {},
+    //delete  
+     handleDelete: () => {}
 
-  handleSelectItem: () => {}
 });
 
 export default AdminContext;

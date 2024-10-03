@@ -1,33 +1,39 @@
 import styled from "styled-components";
 import TextInputs from "../../../../reusableUI/TextInputs";
 import { getInputTextConfig } from "../AddProduct/inputTextsConfig";
-import { useContext } from "react";
-import OrderContext from "../../../../../contexts/OrderContext";
 import ImagePreview from "../AddProduct/ImagePreview";
-import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
+import PropTypes from "prop-types";
+import OrderContext from "../../../../../contexts/OrderContext";
+import { useContext } from "react";
 
 
 const EditProductPanel = () => {
+    const { editedProduct, setEditedProduct, handleEdit } = useContext(OrderContext);
+    const inputTexts = getInputTextConfig(editedProduct);
+  
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      const newValue = name === "price" ? parseFloat(value) || 0 : value;
+      const updatedProduct = {
+        ...editedProduct,
+        [name]: newValue,
+      };
 
-  const{newProduct} = useContext(OrderContext); //useref
-  const inputTexts = getInputTextConfig(newProduct);
+    setEditedProduct(updatedProduct);
+    handleEdit(updatedProduct);
+  };
 
   return (
     <EditProductPanelStyled>
       <ImagePreview
-            imageSource={newProduct.imageSource}
-            title={newProduct.title}
+            imageSource={editedProduct.imageSource}
+            title={editedProduct.title}
         />
       <div className="inputs">
             <TextInputs 
                 inputTexts= {inputTexts}
+                onChange={handleChange}
             />         
-            <div className="submit">
-                <ButtonPrimary
-                    label={"Ajouter un nouveau produit"}
-                    version={"green-button"}
-                />
-            </div>
         </div>
 
     </EditProductPanelStyled>
@@ -35,6 +41,11 @@ const EditProductPanel = () => {
 }
 
 export default EditProductPanel
+
+
+EditProductPanel.propTypes = {
+    selectedItem: PropTypes.object.isRequired
+  };
 
 
 const EditProductPanelStyled = styled.div`

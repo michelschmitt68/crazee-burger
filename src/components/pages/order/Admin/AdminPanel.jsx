@@ -7,6 +7,7 @@ import AdminContext from "../../../../contexts/OrderContext";
 import AddProductPanel from "./AddProduct/AddProductPanel";
 import tabsConfig from "./AdminTab/tabsConfig";
 import DefaultEditProduct from "./UpdateProduct/DefaultEditProduct";
+import EditProductPanel from "./UpdateProduct/EditProductPanel";
 
 
 
@@ -15,7 +16,7 @@ const PanelAdmin = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [activeTab, setActiveTab] = useState("addProduct");
     //Context
-    const { isChecked } = useContext(AdminContext);
+    const { isChecked, selectedItem } = useContext(AdminContext);
     
 
 if (!isChecked) return null;
@@ -47,7 +48,9 @@ if (!isChecked) return null;
       {isVisible && (
         <div className="description">
           {activeTab === "addProduct" && <AddProductPanel />}
-          {activeTab === "editProduct" && <DefaultEditProduct />}
+          {activeTab === "editProduct" && (
+            selectedItem ? <EditProductPanel selectedItem={selectedItem} /> : <DefaultEditProduct />
+    )}
         </div>
       )}
     </PanelAdminStyled>
