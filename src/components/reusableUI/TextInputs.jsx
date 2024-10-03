@@ -19,6 +19,7 @@ const TextInputs = ({ inputTexts, onChange}) => {
                     inputValue={input.value}
                     onChange={onChange}
                     version={"normal"}
+                    ref={input.ref}
                 />
             ))}
         </div>

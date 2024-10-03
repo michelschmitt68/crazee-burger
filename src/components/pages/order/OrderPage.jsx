@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
 import { EMPTY_PRODUCT, fakeMenu2 } from "../../../fakeData/fakeMenu";
@@ -18,6 +18,7 @@ const OrderPage = () => {
   const [editedProduct, setEditedProduct] = useState(null);
   const [activeTab, setActiveTab] = useState("addProduct");
   const [isVisible, setIsVisible] = useState(false);
+  const firstInputRef = useRef(null);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -62,12 +63,15 @@ const OrderPage = () => {
     setEditedProduct(selected);
     setActiveTab("editProduct");
     setIsVisible(true);
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
   }
 
 
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible, firstInputRef}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

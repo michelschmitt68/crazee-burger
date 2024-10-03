@@ -9,7 +9,9 @@ import InfoMessage from "../../../../reusableUI/InfoMessage";
 
 
 const EditProductPanel = () => {
-    const { editedProduct, setEditedProduct, handleEdit } = useContext(OrderContext);
+    const { editedProduct, setEditedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
+
+
     const inputTexts = getInputTextConfig(editedProduct);
   
     const handleChange = (event) => {
@@ -31,11 +33,16 @@ const EditProductPanel = () => {
             title={editedProduct.title}
         />
       <div className="inputs">
-        <TextInputs 
-            inputTexts= {inputTexts}
-            onChange={handleChange}
-        />
-        <InfoMessage label="Cliquer sur un produit du menu pour le modifier en temps réel" type="alert"/>         
+
+      <TextInputs 
+        inputTexts={inputTexts.map((inputText, index) => ({
+          ...inputText,
+          ref: index === 0 ? firstInputRef : null,
+        }))}
+        onChange={handleChange}
+      />
+      <InfoMessage label="Cliquer sur un produit du menu pour le modifier en temps réel" type="alert"/> 
+
       </div>
 
     </EditProductPanelStyled>
