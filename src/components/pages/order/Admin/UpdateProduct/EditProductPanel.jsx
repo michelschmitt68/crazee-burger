@@ -5,6 +5,7 @@ import ImagePreview from "../AddProduct/ImagePreview";
 import PropTypes from "prop-types";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
+import InfoMessage from "../../../../reusableUI/InfoMessage";
 
 
 const EditProductPanel = () => {
@@ -30,11 +31,12 @@ const EditProductPanel = () => {
             title={editedProduct.title}
         />
       <div className="inputs">
-            <TextInputs 
-                inputTexts= {inputTexts}
-                onChange={handleChange}
-            />         
-        </div>
+        <TextInputs 
+            inputTexts= {inputTexts}
+            onChange={handleChange}
+        />
+        <InfoMessage label="Cliquer sur un produit du menu pour le modifier en temps réel" type="alert"/>         
+      </div>
 
     </EditProductPanelStyled>
   )

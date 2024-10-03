@@ -3,10 +3,11 @@ import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
 import { getInputTextConfig } from "./inputTextsConfig";
 import { EMPTY_PRODUCT } from "../../../../../fakeData/fakeMenu";
 import TextInputs from "../../../../reusableUI/TextInputs";
+import InfoMessage from "../../../../reusableUI/InfoMessage";
+import { FiCheck } from "react-icons/fi";
 
 
 const AddProductPanel = () => {
@@ -21,7 +22,6 @@ const AddProductPanel = () => {
             [name]: newValue,
         }));
     };
-    
     const handleSubmit = (event) => { 
         event.preventDefault();
         const newProductToAdd = {
@@ -52,7 +52,9 @@ const AddProductPanel = () => {
                     label={"Ajouter un nouveau produit"}
                     version={"green-button"}
                 />
-                {isSubmitted && <SubmitMessage />}
+                {isSubmitted && 
+                    <InfoMessage icon={<FiCheck className="icon" />} label="Ajouté avec succès !" type="success"/>
+                }
             </div>
         </div>
     </AddProductPanelStyled>
