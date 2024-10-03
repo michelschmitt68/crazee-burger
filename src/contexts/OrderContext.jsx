@@ -13,7 +13,9 @@ const AdminContext = React.createContext({
   handleAdd: () => {},
   handleDelete: () => {},
   newProduct: {},
-  setNewProduct: () => {}
+  setNewProduct: () => {},
+
+  handleSelectItem: () => {}
 });
 
 export default AdminContext;

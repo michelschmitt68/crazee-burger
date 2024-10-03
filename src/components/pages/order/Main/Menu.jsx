@@ -6,7 +6,7 @@ import OrderContext from "../../../../contexts/OrderContext";
 
 const Menu = () => {
   //Context
-  const { menus, handleDelete } = useContext(OrderContext);
+  const { menus, handleDelete, handleSelectItem } = useContext(OrderContext);
 
   return (
     <MenuStyled className="menu">
@@ -17,6 +17,7 @@ const Menu = () => {
           imageSource={imageSource}
           price={price}
           onDelete={() => handleDelete(id)}
+          onSelect= {() => handleSelectItem(title, imageSource, price)}
         />
       ))}      
     </MenuStyled>

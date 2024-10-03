@@ -43,8 +43,14 @@ const OrderPage = () => {
     setMenus(fakeMenu2);
   }
 
+  const handleSelectItem = ( title, imageSource, price) => {
+    console.log( "title : ", title)
+    console.log( "imageSource : ", imageSource)
+    console.log( "price : ", price)
+  }
+
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus, newProduct, setNewProduct}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

@@ -20,7 +20,7 @@ export const getInputTextConfig = (newProduct) => {
         value: newProduct.imageSource
     },
     {
-        type:"number",
+        type:"text",
         name:"price",
         Icon:<MdOutlineEuro/>,
         placeholder:"Prix",
