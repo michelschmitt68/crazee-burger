@@ -16,6 +16,8 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedProduct, setEditedProduct] = useState(null);
+  const [activeTab, setActiveTab] = useState("addProduct");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -57,13 +59,15 @@ const OrderPage = () => {
   const handleSelectItem = ( id, title, imageSource, price) => {
     const selected = { id, title, imageSource, price };
     setSelectedItem(selected);
-    setEditedProduct(selected)
+    setEditedProduct(selected);
+    setActiveTab("editProduct");
+    setIsVisible(true);
   }
 
 
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

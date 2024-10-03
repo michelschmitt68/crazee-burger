@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import AdminTab from "./AdminTab/AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AdminContext from "../../../../contexts/OrderContext";
 import AddProductPanel from "./AddProduct/AddProductPanel";
 import tabsConfig from "./AdminTab/tabsConfig";
@@ -13,10 +13,8 @@ import EditProductPanel from "./UpdateProduct/EditProductPanel";
 
 
 const PanelAdmin = () => {
-    const [isVisible, setIsVisible] = useState(true);
-    const [activeTab, setActiveTab] = useState("addProduct");
     //Context
-    const { isChecked, selectedItem } = useContext(AdminContext);
+    const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
     
 
 if (!isChecked) return null;

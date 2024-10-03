@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const AdminContext = React.createContext({
@@ -23,7 +24,14 @@ const AdminContext = React.createContext({
      setEditedProduct: () => {} ,
      handleEdit: () => {},
     //delete  
-     handleDelete: () => {}
+     handleDelete: () => {},
+
+    //Panel admin
+     isVisible: false, 
+     setIsVisible: () => {},
+      //tabs
+       activeTab: "", 
+       setActiveTab: () => {}
 
 });
 

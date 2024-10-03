@@ -22,7 +22,7 @@ const InputText = ({type, required, inputValue, onChange, placeholder, Icon, cla
 InputText.propTypes = {
   type: PropTypes.string,
   required: PropTypes.bool,
-  inputValue: PropTypes.string,
+  inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,  
   placeholder: PropTypes.string,
   Icon: PropTypes.element,
