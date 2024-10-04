@@ -13,6 +13,7 @@ const AdminContext = React.createContext({
     // Select
     handleSelectItem: () => {},
     selectedItem: {},
+    onDeselect: () => {},
     
     // Add
     newProduct: {},

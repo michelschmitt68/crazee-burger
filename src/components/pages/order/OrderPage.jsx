@@ -14,7 +14,8 @@ const OrderPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [menus, setMenus] = useState(fakeMenu2);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const unselected = {id:"",title:"",imageSource:"",price:""}
+  const [selectedItem, setSelectedItem] = useState(unselected);
   const [editedProduct, setEditedProduct] = useState(null);
   const [activeTab, setActiveTab] = useState("addProduct");
   const [isVisible, setIsVisible] = useState(false);
@@ -35,15 +36,12 @@ const OrderPage = () => {
       });
     }
   };
-
   const handleDelete = (id) => {
     setMenus(prevMenus => prevMenus.filter(menu => menu.id !== id));
   }
-
   const handleAdd = (newMenu) => {
     setMenus([...menus, newMenu]);
   }
-
   const handleEdit = (updatedItem) => {
     setMenus((prevMenus) =>
       prevMenus.map((menu) =>
@@ -52,9 +50,11 @@ const OrderPage = () => {
     );
     setSelectedItem(updatedItem);
   }
-
   const resetMenus = () => {
     setMenus(fakeMenu2);
+  }
+  const onDeselect = () => { 
+    setSelectedItem(unselected) 
   }
 
   const handleSelectItem = ( id, title, imageSource, price) => {
@@ -71,7 +71,7 @@ const OrderPage = () => {
 
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible, firstInputRef}}>
+    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible, firstInputRef, onDeselect}}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />
