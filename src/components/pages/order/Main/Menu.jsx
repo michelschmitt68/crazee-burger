@@ -6,8 +6,8 @@ import OrderContext from "../../../../contexts/OrderContext";
 
 const Menu = () => {
 
-  const { menus, handleDelete, handleSelectItem, selectedItem } = useContext(OrderContext);
-  console.log(selectedItem)
+  const { menus, handleDelete, handleSelectItem, selectedItem, onDeselect } = useContext(OrderContext);
+
   return (
     <MenuStyled className="menu">
       {menus.map(({ id, title, imageSource, price }) => (
@@ -16,7 +16,7 @@ const Menu = () => {
           title={title}
           imageSource={imageSource}
           price={price}
-          onDelete={() => handleDelete(id)}
+          onClickButton={() => selectedItem && selectedItem.id === id ? onDeselect() : handleDelete(id)}
           onSelect= {() => handleSelectItem(id, title, imageSource, price)}
           isSelected={selectedItem.id === id}
         />

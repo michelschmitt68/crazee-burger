@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminContext = React.createContext({
+const OrderContext = React.createContext({
     // Toggle admin
     isChecked: false,
     handleToggle: () => {},
@@ -38,4 +38,4 @@ const AdminContext = React.createContext({
     setActiveTab: () => {}
 });
 
-export default AdminContext;
+export default OrderContext;

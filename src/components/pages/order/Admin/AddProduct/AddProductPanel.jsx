@@ -4,10 +4,10 @@ import { useContext, useState } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import ImagePreview from "./ImagePreview";
 import { getInputTextConfig } from "./inputTextsConfig";
-import { EMPTY_PRODUCT } from "../../../../../fakeData/fakeMenu";
 import TextInputs from "../../../../reusableUI/TextInputs";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
 import { FiCheck } from "react-icons/fi";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 
 const AddProductPanel = () => {

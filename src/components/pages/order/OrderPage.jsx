@@ -6,7 +6,9 @@ import { theme } from "../../../theme";
 import { useRef, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
-import { EMPTY_PRODUCT, fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../enums/product";
+
 
 
 const OrderPage = () => {
@@ -14,8 +16,7 @@ const OrderPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [menus, setMenus] = useState(fakeMenu2);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const unselected = {id:"",title:"",imageSource:"",price:""}
-  const [selectedItem, setSelectedItem] = useState(unselected);
+  const [selectedItem, setSelectedItem] = useState(EMPTY_PRODUCT);
   const [editedProduct, setEditedProduct] = useState(null);
   const [activeTab, setActiveTab] = useState("addProduct");
   const [isVisible, setIsVisible] = useState(false);
@@ -54,9 +55,9 @@ const OrderPage = () => {
     setMenus(fakeMenu2);
   }
   const onDeselect = () => { 
-    setSelectedItem(unselected) 
+    setSelectedItem(EMPTY_PRODUCT) 
+    setEditedProduct(EMPTY_PRODUCT)
   }
-
   const handleSelectItem = ( id, title, imageSource, price) => {
     const selected = { id, title, imageSource, price };
     setSelectedItem(selected);
@@ -68,10 +69,31 @@ const OrderPage = () => {
     }
   }
 
-
+  const orderContextValue = {
+    isChecked, 
+    handleToggle, 
+    menus, 
+    setMenus, 
+    handleDelete, 
+    handleEdit, 
+    handleAdd, 
+    resetMenus, 
+    newProduct, 
+    setNewProduct, 
+    handleSelectItem,
+    selectedItem, 
+    editedProduct, 
+    setEditedProduct,
+    activeTab, 
+    setActiveTab, 
+    isVisible, 
+    setIsVisible, 
+    firstInputRef, 
+    onDeselect
+  }
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleEdit, handleAdd, resetMenus, newProduct, setNewProduct, handleSelectItem, selectedItem, editedProduct, setEditedProduct,activeTab, setActiveTab, isVisible, setIsVisible, firstInputRef, onDeselect}}>
+    <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

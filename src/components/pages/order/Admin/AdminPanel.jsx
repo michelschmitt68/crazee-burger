@@ -8,6 +8,7 @@ import AddProductPanel from "./AddProduct/AddProductPanel";
 import tabsConfig from "./AdminTab/tabsConfig";
 import DefaultEditProduct from "./UpdateProduct/DefaultEditProduct";
 import EditProductPanel from "./UpdateProduct/EditProductPanel";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 
 
@@ -47,7 +48,7 @@ if (!isChecked) return null;
         <div className="description">
           {activeTab === "addProduct" && <AddProductPanel />}
           {activeTab === "editProduct" && (
-            selectedItem ? <EditProductPanel selectedItem={selectedItem} /> : <DefaultEditProduct />
+            selectedItem === EMPTY_PRODUCT ? <DefaultEditProduct /> : <EditProductPanel selectedItem={selectedItem} /> 
     )}
         </div>
       )}
