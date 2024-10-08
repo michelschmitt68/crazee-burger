@@ -1,11 +1,10 @@
-import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
+
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { getInputTextConfig } from "./inputTextsConfig";
-import InfoMessage from "../../../../reusableUI/InfoMessage";
-import { FiCheck } from "react-icons/fi";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import AdminForm from "../AdminForm";
+import SubmitButton from "./SubmitButton";
 
 
 const AddProductPanel = () => {
@@ -41,15 +40,7 @@ const AddProductPanel = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}        
     >
-        <div className="submit">
-            <ButtonPrimary
-                label={"Ajouter un nouveau produit"}
-                version={"green-button"}
-            />
-            {isSubmitted && 
-                <InfoMessage icon={<FiCheck className="icon" />} label="Ajouté avec succès !" type="success"/>
-            }
-        </div>
+        <SubmitButton isSubmitted={isSubmitted}/>
     </AdminForm>
   )
 }
