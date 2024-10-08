@@ -27,7 +27,6 @@ const ImagePreviewStyled = styled.div`
     justify-content: center;
     align-items: center;
     color: ${theme.colors.greySemiDark};
-    border: 1px solid ${theme.colors.greyLight};
     width: 215px;
     height: 120px;
 

@@ -1,13 +1,11 @@
-import styled from "styled-components";
 import ButtonPrimary from "../../../../reusableUI/ButtonPrimary";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
-import ImagePreview from "./ImagePreview";
 import { getInputTextConfig } from "./inputTextsConfig";
-import TextInputs from "../../../../reusableUI/TextInputs";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
 import { FiCheck } from "react-icons/fi";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import AdminForm from "../AdminForm";
 
 
 const AddProductPanel = () => {
@@ -37,48 +35,23 @@ const AddProductPanel = () => {
     const inputTexts = getInputTextConfig(newProduct);
 
   return (
-    <AddProductPanelStyled action="submit" onSubmit={handleSubmit}>
-        <ImagePreview
-            imageSource={newProduct.imageSource}
-            title={newProduct.title}
-        />
-        <div className="inputs">
-            <TextInputs 
-                inputTexts= {inputTexts}
-                onChange={handleChange}
-            />         
-            <div className="submit">
-                <ButtonPrimary
-                    label={"Ajouter un nouveau produit"}
-                    version={"green-button"}
-                />
-                {isSubmitted && 
-                    <InfoMessage icon={<FiCheck className="icon" />} label="Ajouté avec succès !" type="success"/>
-                }
-            </div>
+    <AdminForm
+        product={newProduct}
+        inputTexts={inputTexts}
+        onChange={handleChange}
+        onSubmit={handleSubmit}        
+    >
+        <div className="submit">
+            <ButtonPrimary
+                label={"Ajouter un nouveau produit"}
+                version={"green-button"}
+            />
+            {isSubmitted && 
+                <InfoMessage icon={<FiCheck className="icon" />} label="Ajouté avec succès !" type="success"/>
+            }
         </div>
-    </AddProductPanelStyled>
+    </AdminForm>
   )
 }
 
 export default AddProductPanel;
-
-const AddProductPanelStyled = styled.form`
-
-    display: flex;
-    gap: 20px;
-
-
-    .inputs{
-        display: flex;
-        width: 645px;
-        height: 121px;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .submit{
-        display: flex;
-    }
-
-`;

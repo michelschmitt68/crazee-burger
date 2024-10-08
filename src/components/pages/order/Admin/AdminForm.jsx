@@ -2,56 +2,59 @@ import styled from "styled-components";
 import ImagePreview from "./AddProduct/ImagePreview";
 import PropTypes from "prop-types";
 import InputText from "../../../reusableUI/InputText";
+import { forwardRef } from "react";
 
-const AdminForm = ({product, inputTexts, onChange}) => {
-    console.log("bb", inputTexts)
-    return (
-    <AdminFormStyled>
-      <ImagePreview
-        imageSource={product.imageSource}
-        title={product.title}
-        />
+const AdminForm = forwardRef(({ product, inputTexts, onChange,  onSubmit, children }, ref) => {
+
+  return (
+    <AdminFormStyled onSubmit={onSubmit}>
+      <ImagePreview imageSource={product.imageSource} title={product.title} />
       <div className="inputs">
         {inputTexts.map((input, index) => (
-            <InputText
-                key={index}
-                type={input.type}
-                required={false}
-                name={input.name}
-                Icon={input.Icon}
-                placeholder={input.placeholder}
-                inputValue={input.value}
-                onChange={onChange}
-                version={"normal"}
-                ref={index === 0 ? input.ref : null}
-            />
+          <InputText
+            key={index}
+            type={input.type}
+            required={false}
+            name={input.name}
+            Icon={input.Icon}
+            placeholder={input.placeholder}
+            inputValue={input.value}
+            onChange={onChange}
+            version={"normal"}
+            ref={ref && index === 0 ? ref : null}
+          />
         ))}
+
+        {children}
       </div>
     </AdminFormStyled>
   )
-}
+});
 
-export default AdminForm
-
+AdminForm.displayName = "AdminForm";
 AdminForm.propTypes = {
-    product: PropTypes.object,
-    inputTexts: PropTypes.array,
-    onChange: PropTypes.func
-  };
+  product: PropTypes.object,
+  inputTexts: PropTypes.array,
+  onChange: PropTypes.func,
+  children: PropTypes.object,
+  onSubmit: PropTypes.func
+};
 
-const AdminFormStyled = styled.div`
+export default AdminForm;
+
+const AdminFormStyled = styled.form`
   display: flex;
   gap: 20px;
 
-  .inputs{
-        display: flex;
-        width: 645px;
-        height: 121px;
-        flex-direction: column;
-        gap: 8px;
-    }
+  .inputs {
+    display: flex;
+    width: 645px;
+    height: 121px;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-    .submit{
-        display: flex;
-    }
+  .submit {
+    display: flex;
+  }
 `;

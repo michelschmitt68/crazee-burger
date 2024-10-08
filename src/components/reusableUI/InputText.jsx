@@ -5,7 +5,7 @@ import  { forwardRef } from 'react';
 
 
 const InputText = forwardRef(({ type, required, inputValue, onChange, placeholder, Icon, className, name, version }, ref) => {
-  console.log('cc', InputText)
+
   return (
     <InputStyled className={className} version={version}>
       {Icon && Icon}

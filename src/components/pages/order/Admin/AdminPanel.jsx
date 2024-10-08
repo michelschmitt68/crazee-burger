@@ -14,8 +14,8 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 
 const PanelAdmin = () => {
-    //Context
-    const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
+
+  const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
     
 
 if (!isChecked) return null;
