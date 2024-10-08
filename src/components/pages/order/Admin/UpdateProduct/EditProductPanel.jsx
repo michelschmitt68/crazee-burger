@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
+import AdminForm from "../AdminForm";
 
 
 const EditProductPanel = () => {
@@ -27,25 +28,14 @@ const EditProductPanel = () => {
   };
 
   return (
-    <EditProductPanelStyled>
-      <ImagePreview
-            imageSource={editedProduct.imageSource}
-            title={editedProduct.title}
-        />
-      <div className="inputs">
-
-      <TextInputs 
-        inputTexts={inputTexts.map((inputText, index) => ({
-          ...inputText,
-          ref: index === 0 ? firstInputRef : null,
-        }))}
+    <>
+      <AdminForm 
+        product={editedProduct}
+        inputTexts={inputTexts}
         onChange={handleChange}
       />
       <InfoMessage label="Cliquer sur un produit du menu pour le modifier en temps réel" type="alert"/> 
-
-      </div>
-
-    </EditProductPanelStyled>
+    </>
   )
 }
 
@@ -55,20 +45,3 @@ export default EditProductPanel
 EditProductPanel.propTypes = {
     selectedItem: PropTypes.object.isRequired
   };
-
-
-const EditProductPanelStyled = styled.div`
-
-    display: flex;
-    gap: 20px;
-
-
-    .inputs{
-        display: flex;
-        width: 645px;
-        height: 121px;
-        flex-direction: column;
-        gap: 8px;
-    }
-  
-`;
