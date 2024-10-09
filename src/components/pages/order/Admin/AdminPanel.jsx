@@ -86,8 +86,6 @@ const PanelAdminStyled = styled.div`
     border: 1px solid ${theme.colors.greyLight};
     padding: 30px 70px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
 }
     
     

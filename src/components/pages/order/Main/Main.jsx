@@ -6,6 +6,7 @@ import AdminPanel from "../Admin/AdminPanel";
 import EmptyMenu from "./EmptyMenu";
 import { useContext } from "react";
 import OrderContext from '../../../../contexts/OrderContext';
+import Basket from "../Basket/Basket"
 
 
 
@@ -15,7 +16,7 @@ export default function Main() {
 
   return (
       <MainStyled className="main">
-        <div className="basket"></div>
+        <Basket></Basket>
 
         <div className="boddd">
           {menus.length === 0 ? (

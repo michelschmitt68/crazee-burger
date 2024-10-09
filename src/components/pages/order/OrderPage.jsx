@@ -6,7 +6,7 @@ import { theme } from "../../../theme";
 import { useRef, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu1 } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 
 
@@ -14,7 +14,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
-  const [menus, setMenus] = useState(fakeMenu2);
+  const [menus, setMenus] = useState(fakeMenu1);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [selectedItem, setSelectedItem] = useState(EMPTY_PRODUCT);
   const [editedProduct, setEditedProduct] = useState(null);
@@ -52,7 +52,7 @@ const OrderPage = () => {
     setSelectedItem(updatedItem);
   }
   const resetMenus = () => {
-    setMenus(fakeMenu2);
+    setMenus(fakeMenu1);
   }
   const onDeselect = () => { 
     setSelectedItem(EMPTY_PRODUCT) 
