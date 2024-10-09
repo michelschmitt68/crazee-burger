@@ -15,7 +15,7 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const PanelAdmin = () => {
 
-  const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
+  const { isChecked, selectedItem, activeTab, handleActiveTab, isVisible, handleIsVisible } = useContext(AdminContext);
     
 
 if (!isChecked) return null;
@@ -26,7 +26,7 @@ if (!isChecked) return null;
         <AdminTab
           key={"toggle"}
           Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />}
-          onClick={() => setIsVisible(!isVisible)}
+          onClick={() => handleIsVisible(isVisible)}
           className={isVisible ? "tab-select" : ""}
         />
 
@@ -36,8 +36,8 @@ if (!isChecked) return null;
             Icon={tab.Icon}
             inputValue={tab.inputValue}
             onClick={ () => {
-              setActiveTab(tab.id);
-              setIsVisible(true);
+              handleActiveTab(tab.id);
+              handleIsVisible(true);
               }
             }
             className= {activeTab === tab.id ? "tab-select" : ""}

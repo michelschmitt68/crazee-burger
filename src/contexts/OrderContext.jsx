@@ -31,11 +31,11 @@ const OrderContext = React.createContext({
 
     // Panel admin
     isVisible: false, 
-    setIsVisible: () => {},
+    handleIsVisible: () => {},
 
     // Tabs
     activeTab: "", 
-    setActiveTab: () => {}
+    handleActivTab: () => {}
 });
 
 export default OrderContext;
