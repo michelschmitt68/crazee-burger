@@ -51,6 +51,10 @@ export const useMenus = () => {
     const handleActiveTab = (activeTab) => {
         setActiveTab(activeTab);
     }
-    return {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
+
+    const handleEditedProduct = (product) => {
+        setEditedProduct(product);
+    }
+    return {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, handleEditedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
 }
 

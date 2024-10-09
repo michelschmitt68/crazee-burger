@@ -15,7 +15,7 @@ const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
+  const {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct,handleEditedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
   = useMenus();
 
   const handleToggle = () => {
@@ -46,7 +46,8 @@ const OrderPage = () => {
     setNewProduct, 
     handleSelectItem,
     selectedItem, 
-    editedProduct, 
+    editedProduct,
+    handleEditedProduct, 
     activeTab,
     handleActiveTab, 
     isVisible,

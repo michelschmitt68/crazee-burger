@@ -7,7 +7,7 @@ import AdminForm from "../AdminForm";
 
 
 const EditProductPanel = () => {
-    const { editedProduct, setEditedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
+    const { editedProduct, handleEditedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
     const inputTexts = getInputTextConfig(editedProduct);
 
     const handleChange = (event) => {
@@ -17,7 +17,7 @@ const EditProductPanel = () => {
         ...editedProduct,
         [name]: newValue,
       };
-    setEditedProduct(updatedProduct);
+      handleEditedProduct(updatedProduct);
     handleEdit(updatedProduct);
     };
 
