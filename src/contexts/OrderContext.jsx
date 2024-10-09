@@ -1,19 +1,41 @@
 import React from 'react';
 
-const AdminContext = React.createContext({
+const OrderContext = React.createContext({
+    // Toggle admin
+    isChecked: false,
+    handleToggle: () => {},
 
-  //toogle admin
-  isChecked: false,
-  handleToggle: () => {},
+    // Menus
+    menus: [],
+    setMenus: () => {},
+    resetMenus: () => {}, 
 
-  //menus
-  menus: [],
-  setMenus: () => {},
-  resetMenus: () => {},
-  handleAdd: () => {},
-  handleDelete: () => {},
-  newProduct: {},
-  setNewProduct: () => {}
+    // Select
+    handleSelectItem: () => {},
+    selectedItem: {},
+    onDeselect: () => {},
+    
+    // Add
+    newProduct: {},
+    setNewProduct: () => {},
+    handleAdd: () => {},
+
+    // Edit
+    editedProduct: {}, 
+    setEditedProduct: () => {},
+    handleEdit: () => {},
+    firstInputRef: React.createRef(), 
+
+    // Delete  
+    handleDelete: () => {},
+
+    // Panel admin
+    isVisible: false, 
+    setIsVisible: () => {},
+
+    // Tabs
+    activeTab: "", 
+    setActiveTab: () => {}
 });
 
-export default AdminContext;
+export default OrderContext;

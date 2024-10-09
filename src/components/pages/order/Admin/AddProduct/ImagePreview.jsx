@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import styled from "styled-components";
-import { theme } from "../../../../theme";
+import { theme } from "../../../../../theme";
 
 
 const ImagePreview = ({imageSource, title}) => {
@@ -27,7 +27,6 @@ const ImagePreviewStyled = styled.div`
     justify-content: center;
     align-items: center;
     color: ${theme.colors.greySemiDark};
-    border: 1px solid ${theme.colors.greyLight};
     width: 215px;
     height: 120px;
 

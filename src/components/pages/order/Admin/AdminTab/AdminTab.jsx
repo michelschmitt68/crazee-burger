@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PropTypes from 'prop-types';
-import { theme } from "../../../../theme";
+import { theme } from "../../../../../theme";
 
 
 const TabAdmin = ({Icon, inputValue, onClick, className}) => {

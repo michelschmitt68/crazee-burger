@@ -3,10 +3,12 @@ import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
-import { EMPTY_PRODUCT, fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../enums/product";
+
 
 
 const OrderPage = () => {
@@ -14,6 +16,11 @@ const OrderPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [menus, setMenus] = useState(fakeMenu2);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [selectedItem, setSelectedItem] = useState(EMPTY_PRODUCT);
+  const [editedProduct, setEditedProduct] = useState(null);
+  const [activeTab, setActiveTab] = useState("addProduct");
+  const [isVisible, setIsVisible] = useState(false);
+  const firstInputRef = useRef(null);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -30,21 +37,63 @@ const OrderPage = () => {
       });
     }
   };
-
   const handleDelete = (id) => {
     setMenus(prevMenus => prevMenus.filter(menu => menu.id !== id));
   }
-
   const handleAdd = (newMenu) => {
     setMenus([...menus, newMenu]);
   }
-
+  const handleEdit = (updatedItem) => {
+    setMenus((prevMenus) =>
+      prevMenus.map((menu) =>
+        menu.id === updatedItem.id ? updatedItem : menu
+      )
+    );
+    setSelectedItem(updatedItem);
+  }
   const resetMenus = () => {
     setMenus(fakeMenu2);
   }
+  const onDeselect = () => { 
+    setSelectedItem(EMPTY_PRODUCT) 
+    setEditedProduct(EMPTY_PRODUCT)
+  }
+  const handleSelectItem = ( id, title, imageSource, price) => {
+    const selected = { id, title, imageSource, price };
+    setSelectedItem(selected);
+    setEditedProduct(selected);
+    setActiveTab("editProduct");
+    setIsVisible(true);
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
+  }
+
+  const orderContextValue = {
+    isChecked, 
+    handleToggle, 
+    menus, 
+    setMenus, 
+    handleDelete, 
+    handleEdit, 
+    handleAdd, 
+    resetMenus, 
+    newProduct, 
+    setNewProduct, 
+    handleSelectItem,
+    selectedItem, 
+    editedProduct, 
+    setEditedProduct,
+    activeTab, 
+    setActiveTab, 
+    isVisible, 
+    setIsVisible, 
+    firstInputRef, 
+    onDeselect
+  }
 
   return (
-    <OrderContext.Provider value={{isChecked, handleToggle, menus, setMenus, handleDelete, handleAdd, resetMenus, newProduct, setNewProduct}}>
+    <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
           <Navbar />

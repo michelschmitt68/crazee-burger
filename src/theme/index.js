@@ -5,6 +5,7 @@ const colors = {
   background_white: "#f5f5f7",
   background_dark: "#292729",
   primary: "#ffa01b",
+  orangeHighlight: "#FF9A23",
   primary_burger: "#ff9f1b",
   green: "green",
   success: "#60bd4f",
@@ -48,7 +49,9 @@ const borderRadius = {
   extraRound: "15px",
   circle: "50%",
 }
-const shadows = {}
+const shadows = {
+  light: "0px 0px 8px 0px"
+}
 const weights = {
   light: 300,
   regular: 400,

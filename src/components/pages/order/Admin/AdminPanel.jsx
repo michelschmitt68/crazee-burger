@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import AdminTab from "./AdminTab";
+import AdminTab from "./AdminTab/AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AdminContext from "../../../../contexts/OrderContext";
-import AddProductPanel from "./AddProductPanel";
-import tabsConfig from "./tabsConfig";
+import AddProductPanel from "./AddProduct/AddProductPanel";
+import tabsConfig from "./AdminTab/tabsConfig";
+import DefaultEditProduct from "./UpdateProduct/DefaultEditProduct";
+import EditProductPanel from "./UpdateProduct/EditProductPanel";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 
 
 
 const PanelAdmin = () => {
-    const [isVisible, setIsVisible] = useState(true);
-    const [activeTab, setActiveTab] = useState("addProduct");
-    //Context
-    const { isChecked } = useContext(AdminContext);
+
+  const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
     
 
 if (!isChecked) return null;
@@ -44,9 +45,11 @@ if (!isChecked) return null;
         ))}
       </div>
       {isVisible && (
-
         <div className="description">
-          <AddProductPanel></AddProductPanel>
+          {activeTab === "addProduct" && <AddProductPanel />}
+          {activeTab === "editProduct" && (
+            selectedItem === EMPTY_PRODUCT ? <DefaultEditProduct /> : <EditProductPanel selectedItem={selectedItem} /> 
+    )}
         </div>
       )}
     </PanelAdminStyled>
