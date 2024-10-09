@@ -26,7 +26,7 @@ if (!isChecked) return null;
         <AdminTab
           key={"toggle"}
           Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />}
-          onClick={() => handleIsVisible(isVisible)}
+          onClick={() => handleIsVisible(!isVisible)}
           className={isVisible ? "tab-select" : ""}
         />
 

@@ -8,6 +8,7 @@ import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenus } from "../../../hooks/useMenus";
+import { useAdminPanel } from "../../../hooks/useAdminPanel";
 
 
 
@@ -15,8 +16,9 @@ const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
+  const {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct}
   = useMenus();
+  const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
