@@ -61,9 +61,11 @@ export default PanelAdmin;
 
 const PanelAdminStyled = styled.div`
   display: flex;
-  position: fixed;
-  bottom: 32px;
-  width: 1400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
