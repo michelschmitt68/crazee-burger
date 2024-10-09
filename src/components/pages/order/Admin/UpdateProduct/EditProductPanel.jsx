@@ -19,7 +19,7 @@ const EditProductPanel = () => {
       };
     setEditedProduct(updatedProduct);
     handleEdit(updatedProduct);
-  };
+    };
 
   return (
     <AdminForm 
