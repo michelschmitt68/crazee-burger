@@ -25,6 +25,7 @@ export const useMenus = () => {
           )
         );
         setSelectedItem(updatedItem);
+        setEditedProduct(updatedItem)
     }
     const resetMenus = () => {
         setMenus(fakeMenu1);
@@ -52,9 +53,6 @@ export const useMenus = () => {
         setActiveTab(activeTab);
     }
 
-    const handleEditedProduct = (product) => {
-        setEditedProduct(product);
-    }
-    return {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, handleEditedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
+    return {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct, activeTab, handleActiveTab, isVisible, handleIsVisible}
 }
 
