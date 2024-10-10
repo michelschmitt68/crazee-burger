@@ -34,7 +34,6 @@ export const useMenus = () => {
     }
     const handleSelectItem = ( id, title, imageSource, price) => {
         const selected = { id, title, imageSource, price };
-        console.log(selected)
         setSelectedItem(selected);
         setEditedProduct(selected);
         if (firstInputRef.current) {
@@ -42,8 +41,10 @@ export const useMenus = () => {
         }
     }
 
+    const handleMenus = (menus) => {
+        setMenus(menus);
+    }
 
-
-    return {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct}
+    return {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct}
 }
 

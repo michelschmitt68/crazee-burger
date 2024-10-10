@@ -41,6 +41,7 @@ const EmptyMenuStyled = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    height: 100%;
 
     font-family: "Amatic SC", cursive;
     color: ${theme.colors.greyBlue};

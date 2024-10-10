@@ -9,6 +9,7 @@ import OrderContext from "../../../contexts/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenus } from "../../../hooks/useMenus";
 import { useAdminPanel } from "../../../hooks/useAdminPanel";
+import { useBasket } from "../../../hooks/useBasket";
 
 
 
@@ -16,9 +17,10 @@ const OrderPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const {menus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct}
-  = useMenus();
+  const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
+  const {handleAddBuyList} = useBasket(menus, handleMenus);
+  console.log("updtade", menus)
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -39,7 +41,8 @@ const OrderPage = () => {
   const orderContextValue = {
     isChecked, 
     handleToggle, 
-    menus, 
+    menus,
+    handleMenus,
     handleDelete, 
     handleEdit, 
     handleAdd, 
@@ -53,7 +56,8 @@ const OrderPage = () => {
     handleActiveTab, 
     isVisible,
     handleIsVisible,
-    onDeselect
+    onDeselect,
+    handleAddBuyList
   }
 
   return (

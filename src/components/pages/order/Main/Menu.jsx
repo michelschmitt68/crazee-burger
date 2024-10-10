@@ -19,6 +19,7 @@ const Menu = () => {
       {menus.map(({ id, title, imageSource, price }) => (
         <Item 
           key={id}
+          id={id}
           title={title}
           imageSource={imageSource}
           price={price}
