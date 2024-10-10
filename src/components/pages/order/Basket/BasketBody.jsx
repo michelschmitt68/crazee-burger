@@ -41,4 +41,5 @@ const BasketBodyStyled = styled.div`
   flex: 1;
   padding: 20px 16px;
   gap: 20px;
+  max-height: calc(100vh - 162px);
 `;

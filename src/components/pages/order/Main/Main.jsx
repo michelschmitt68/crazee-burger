@@ -18,7 +18,7 @@ export default function Main() {
       <MainStyled className="main">
         <Basket></Basket>
 
-        <div className="boddd">
+        <div className="body">
           {menus.length === 0 ? (
             <EmptyMenu />
           ) : (
@@ -43,10 +43,7 @@ const MainStyled = styled.div`
   grid-template-columns: 25% 1fr;
 
   overflow-y: scroll;
-  .basket {
-    background: pink;
-  }
-  .boddd{
+  .body{
     position: relative;
   }
 `

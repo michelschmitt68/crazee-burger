@@ -20,7 +20,6 @@ const OrderPage = () => {
   const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
   const {handleAddBuyList} = useBasket(menus, handleMenus);
-  console.log("updtade", menus)
 
   const handleToggle = () => {
     setIsChecked(!isChecked);

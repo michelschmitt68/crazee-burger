@@ -26,9 +26,9 @@ const ItemBuy = ({imageSource, title, price, quantity}) => {
 export default ItemBuy
 
 ItemBuy.propTypes = {
-    imageSource: PropTypes.number,
+    imageSource: PropTypes.string,
     title: PropTypes.string,
-    price: PropTypes.string
+    price: PropTypes.number
   };
 
   const ItemBuyStyled = styled.div`
@@ -41,6 +41,7 @@ ItemBuy.propTypes = {
   box-shadow: -4px 4px 20px 0px rgb(0 0 0 / 20%);
   display: flex;
   align-items: center;
+  gap: 20px;
 
 
 
@@ -50,8 +51,8 @@ ItemBuy.propTypes = {
     align-items: center;
     
     img {
-      max-width: 70px;  
-      height: 85px;
+      width: 70px;  
+      height: 70px;
       object-fit: contain; 
     }
   }
@@ -59,11 +60,12 @@ ItemBuy.propTypes = {
     display: flex;
     flex-direction: column;
     width: 50%;
-    align-items: center;
+    align-items: left;
 
     p{
     font-size: ${theme.fonts.P3};
     font-weight: ${theme.weights.bold};
+    text-align: left;
     }
   }
 

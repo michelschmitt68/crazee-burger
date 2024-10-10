@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import { fakeMenu1 } from "../fakeData/fakeMenu";
+import { fakeMenu2 } from "../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../enums/product";
 
 
 export const useMenus = () => {
 
-    const [menus, setMenus] = useState(fakeMenu1);
+    const [menus, setMenus] = useState(fakeMenu2);
     const [selectedItem, setSelectedItem] = useState(EMPTY_PRODUCT);
     const [editedProduct, setEditedProduct] = useState(null);
     const firstInputRef = useRef(null);
@@ -26,7 +26,7 @@ export const useMenus = () => {
         setEditedProduct(updatedItem)
     }
     const resetMenus = () => {
-        setMenus(fakeMenu1);
+        setMenus(fakeMenu2);
     }
     const onDeselect = () => { 
         setSelectedItem(EMPTY_PRODUCT) 

@@ -25,4 +25,6 @@ const BasketStyled = styled.div`
   font-size: ${theme.fonts.P4};
   font-family: "Amatic SC", cursive;
   font-weight: ${theme.weights.regular};
+  position: sticky;
+  top: 0px;
 `;
