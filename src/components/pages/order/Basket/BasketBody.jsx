@@ -12,7 +12,6 @@ const BasketBody = () => {
       {hasItemsInBasket ? (
         menus.map((menu) => {
           if (menu.quantity > 0) {
-            console.log("Menu:", menu);
             return (
               <ItemBuy
                 key={menu.id}
@@ -36,8 +35,10 @@ export default BasketBody;
 
 const BasketBodyStyled = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: center;
   align-items: center;
   flex: 1;
+  padding: 20px 16px;
+  gap: 20px;
 `;

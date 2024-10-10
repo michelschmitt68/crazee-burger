@@ -18,7 +18,7 @@ const Basket = () => {
 export default Basket
 
 const BasketStyled = styled.div`
-  width: 350px;
+  width: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
