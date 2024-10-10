@@ -16,7 +16,7 @@ const ItemBuy = ({imageSource, title, price, quantity}) => {
       </div>
       <div className="item-info">
         <p>{title}</p>
-        <span>{price} €</span>
+        <span>{price.toFixed(2)} €</span>
       </div>
       <span>X {quantity}</span>
     </ItemBuyStyled>
@@ -28,7 +28,8 @@ export default ItemBuy
 ItemBuy.propTypes = {
     imageSource: PropTypes.string,
     title: PropTypes.string,
-    price: PropTypes.number
+    price: PropTypes.number,
+    quantity: PropTypes.number
   };
 
   const ItemBuyStyled = styled.div`

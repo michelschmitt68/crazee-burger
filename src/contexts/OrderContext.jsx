@@ -38,7 +38,8 @@ const OrderContext = React.createContext({
     handleActivTab: () => {},
 
     //Add on buyList
-    handleAddBuyList: () => {}
+    handleAddBuyList: () => {},
+    totalBuy:0
 });
 
 export default OrderContext;

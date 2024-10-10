@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import { useContext } from "react";
+import OrderContext from "../../../../contexts/OrderContext";
 
 
 const Total = () => {
+
+  const {totalBuy} = useContext(OrderContext); 
+
   return (
     <TotalStyled>
         <span>Total</span>
-        <span>0,00€</span>
+        <span>{totalBuy.toFixed(2)} €</span>
     </TotalStyled>
   )
 }

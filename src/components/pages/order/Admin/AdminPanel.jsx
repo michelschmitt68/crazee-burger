@@ -61,7 +61,7 @@ export default PanelAdmin;
 
 const PanelAdminStyled = styled.div`
   display: flex;
-  position: absolute;
+  position: sticky;
   left: 0;
   right: 0;
   bottom: 0;

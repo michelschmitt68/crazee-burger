@@ -19,6 +19,7 @@ export default function Main() {
         <Basket></Basket>
 
         <div className="body">
+          {console.log("zzz",menus)}
           {menus.length === 0 ? (
             <EmptyMenu />
           ) : (
@@ -45,5 +46,6 @@ const MainStyled = styled.div`
   overflow-y: scroll;
   .body{
     position: relative;
+    height: 1109px;
   }
 `
