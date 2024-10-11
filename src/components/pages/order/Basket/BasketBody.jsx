@@ -2,6 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../contexts/OrderContext";
 import ItemBuy from "./ItemBuy";
+import EmptyCommande from "./EmptyCommande";
 
 const BasketBody = () => {
   const { menus } = useContext(OrderContext);
@@ -25,7 +26,7 @@ const BasketBody = () => {
           }
         })
       ) : (
-        <span>VOTRE COMMANDE EST VIDE.</span>
+        <EmptyCommande />
       )}
     </BasketBodyStyled>
   );

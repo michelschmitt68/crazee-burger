@@ -37,5 +37,6 @@ const RedButtonStyled = styled.div`
     justify-content: center;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P3};
+    cursor: pointer;
 
 `;

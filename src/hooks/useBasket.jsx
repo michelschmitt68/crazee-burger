@@ -31,7 +31,6 @@ export const useBasket = (menus, handleMenus) => {
             acc + (menu.price * menu.quantity), 0 
         );
         SetTotalBuy(total); 
-        console.log("Total:", total);
     };
 
     return { handleAddBuyList, handleDeleteBuyList, totalBuy };
