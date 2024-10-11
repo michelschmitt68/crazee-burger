@@ -2,12 +2,20 @@ import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import defaultImage from "/images/coming-soon.png";
+import { useState } from "react";
+import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
+import RedButton from "./RedButton";
 
 
 const ItemBuy = ({imageSource, title, price, quantity}) => {
 
+    const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <ItemBuyStyled>
+    <ItemBuyStyled
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="image">
         <img 
           src={imageSource ? imageSource : defaultImage} 
@@ -18,7 +26,12 @@ const ItemBuy = ({imageSource, title, price, quantity}) => {
         <p>{title}</p>
         <span>{price.toFixed(2)} €</span>
       </div>
-      <span>X {quantity}</span>
+      {isHovered ? (
+        <RedButton />
+        ) : (
+        <span>X {quantity}</span>
+        ) 
+    }
     </ItemBuyStyled>
   )
 }
@@ -38,12 +51,11 @@ ItemBuy.propTypes = {
   background-color: ${theme.colors.white};
   height: 86px;
   padding: 8px 16px;
-  padding-right: 0px;
   box-shadow: -4px 4px 20px 0px rgb(0 0 0 / 20%);
   display: flex;
   align-items: center;
-  gap: 20px;
-
+  gap: 16px;
+  position: relative;
 
 
   .image {
