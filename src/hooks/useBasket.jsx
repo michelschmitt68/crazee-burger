@@ -6,16 +6,25 @@ export const useBasket = (menus, handleMenus) => {
 
     const handleAddBuyList = (id) => {
         const updatedMenus = menus.map((menu) => {
-
             if (menu.id === id) {
                 menu.quantity += 1; 
             }
             return menu; 
         });
-
         handleMenus(updatedMenus); 
         handleTotalBuy(updatedMenus); 
     };
+
+    const handleDeleteBuyList = (id) => {
+        const updatedMenus = menus.map((menu) => {
+            if (menu.id === id) {
+                return { ...menu, quantity: 0 };
+            }
+            return menu; 
+        });
+        handleMenus(updatedMenus); 
+        handleTotalBuy(updatedMenus);
+    }
 
     const handleTotalBuy = (updatedMenus) => {
         const total = updatedMenus.reduce((acc, menu) => 
@@ -25,5 +34,5 @@ export const useBasket = (menus, handleMenus) => {
         console.log("Total:", total);
     };
 
-    return { handleAddBuyList, totalBuy };
+    return { handleAddBuyList, handleDeleteBuyList, totalBuy };
 };

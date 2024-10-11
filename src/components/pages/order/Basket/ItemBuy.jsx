@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import defaultImage from "/images/coming-soon.png";
 import { useState } from "react";
-import ButtonPrimary from "../../../reusableUI/ButtonPrimary";
 import RedButton from "./RedButton";
 
 
-const ItemBuy = ({imageSource, title, price, quantity}) => {
+const ItemBuy = ({id, imageSource, title, price, quantity}) => {
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -27,7 +26,7 @@ const ItemBuy = ({imageSource, title, price, quantity}) => {
         <span>{price.toFixed(2)} €</span>
       </div>
       {isHovered ? (
-        <RedButton />
+        <RedButton id={id}/>
         ) : (
         <span>X {quantity}</span>
         ) 
@@ -39,6 +38,7 @@ const ItemBuy = ({imageSource, title, price, quantity}) => {
 export default ItemBuy
 
 ItemBuy.propTypes = {
+    id: PropTypes.string,
     imageSource: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,

@@ -39,6 +39,7 @@ const OrderContext = React.createContext({
 
     //Add on buyList
     handleAddBuyList: () => {},
+    handleDeleteBuyList: () => {},
     totalBuy:0
 });
 
