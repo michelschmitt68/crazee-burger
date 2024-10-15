@@ -9,6 +9,7 @@ import RedButton from "./RedButton";
 const ItemBuy = ({id, imageSource, title, price, quantity}) => {
 
     const [isHovered, setIsHovered] = useState(false);
+    console.log("infos", id, imageSource, title, price, quantity)
 
   return (
     <ItemBuyStyled

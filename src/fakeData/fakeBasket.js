@@ -1,4 +1,5 @@
-export const EMPTY = []
+export const EMPTY = [
+]
 
 export const SMALL = [
   {

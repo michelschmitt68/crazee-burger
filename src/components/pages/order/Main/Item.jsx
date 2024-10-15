@@ -7,8 +7,11 @@ import { useContext } from 'react';
 import OrderContext from '../../../../contexts/OrderContext';
 import defaultImage from "/images/coming-soon.png";
 
-const Item = ({ id, title, imageSource, price, onClickButton, onSelect, isSelected }) => {
-  const { isChecked, handleAddBuyList } = useContext(OrderContext);
+
+const Item = ({ title, imageSource, price, onClickButton, onSelect, isSelected, onAddToBasket }) => {
+  
+  const { isChecked } = useContext(OrderContext);
+
 
   return (
     <ItemStyled className="produit" $isChecked={isChecked} $isSelected={isSelected} onClick={onSelect}>
@@ -33,7 +36,7 @@ const Item = ({ id, title, imageSource, price, onClickButton, onSelect, isSelect
         <div className="description">
           <div className="left-description">{price.toFixed(2)} €</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} onClick={() => handleAddBuyList(id)}/>
+            <PrimaryButton className="primary-button" label={"Ajouter"} onClick={onAddToBasket}/>
           </div>
         </div>
       </div>
@@ -49,7 +52,8 @@ Item.propTypes = {
   onDelete: PropTypes.func,
   onSelect: PropTypes.func,
   isSelected: PropTypes.bool,
-  onClickButton: PropTypes.func
+  onClickButton: PropTypes.func,
+  onAddToBasket: PropTypes.func
 };
 
 const ItemStyled = styled.div`

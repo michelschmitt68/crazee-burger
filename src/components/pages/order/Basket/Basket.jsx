@@ -3,13 +3,18 @@ import { theme } from "../../../../theme";
 import Total from "./Total";
 import BasketBody from "./BasketBody";
 import Footer from "./Footer";
+import OrderContext from "../../../../contexts/OrderContext";
+import { useContext } from "react";
 
 
 const Basket = () => {
+
+  const { basket } = useContext(OrderContext);
+
   return (
     <BasketStyled>
         <Total />
-        <BasketBody/>
+        <BasketBody basket={basket}/>
         <Footer/>    
     </BasketStyled>
   )

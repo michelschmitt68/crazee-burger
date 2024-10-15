@@ -19,7 +19,6 @@ export default function Main() {
         <Basket></Basket>
 
         <div className="body">
-          {console.log("zzz",menus)}
           {menus.length === 0 ? (
             <EmptyMenu />
           ) : (

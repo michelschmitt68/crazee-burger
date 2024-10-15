@@ -1,29 +1,33 @@
-import { useContext } from "react";
+
 import styled from "styled-components";
-import OrderContext from "../../../../contexts/OrderContext";
 import ItemBuy from "./ItemBuy";
 import EmptyCommande from "./EmptyCommande";
+import PropTypes from 'prop-types';
+import { findObjectById } from "../../../../utils/arrays";
+import { useContext } from "react";
+import OrderContext from "../../../../contexts/OrderContext";
 
-const BasketBody = () => {
-  const { menus } = useContext(OrderContext);
-  const hasItemsInBasket = menus.some((menu) => menu.quantity > 0);
+const BasketBody = ({ basket }) => {
+
+  const {menus} = useContext(OrderContext);
+  const hasItemsInBasket = basket.some((menu) => menu.quantity > 0);
+  console.log("basket:", basket)
 
   return (
     <BasketBodyStyled className="body">
       {hasItemsInBasket ? (
-        menus.map((menu) => {
-          if (menu.quantity > 0) {
+        basket.map((basketProduct) => {
+          const menuProduct = findObjectById(basketProduct.id, menus);
             return (
               <ItemBuy
-                key={menu.id}
-                id={menu.id}
-                title={menu.title}
-                imageSource={menu.imageSource}
-                price={menu.price}
-                quantity={menu.quantity}
+                key={menuProduct.id}
+                id={menuProduct.id}
+                title={menuProduct.title}
+                imageSource={menuProduct.imageSource}
+                price={menuProduct.price}
+                quantity={basketProduct.quantity}
               />
             );
-          }
         })
       ) : (
         <EmptyCommande />
@@ -33,6 +37,10 @@ const BasketBody = () => {
 };
 
 export default BasketBody;
+
+BasketBody.propTypes = {
+  basket: PropTypes.array,
+};
 
 const BasketBodyStyled = styled.div`
   display: flex;

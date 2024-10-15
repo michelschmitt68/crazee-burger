@@ -6,7 +6,7 @@ const OrderContext = React.createContext({
     handleToggle: () => {},
 
     // Menus
-    menus: {},
+    menus: [],
     handleMenus: () => {},
     resetMenus: () => {}, 
 
@@ -37,10 +37,15 @@ const OrderContext = React.createContext({
     activeTab: "", 
     handleActivTab: () => {},
 
-    //Add on buyList
-    handleAddBuyList: () => {},
-    handleDeleteBuyList: () => {},
-    totalBuy:0
+    // //Add on buyList
+    // handleAddBuyList: () => {},
+    // handleDeleteBuyList: () => {},
+    // totalBuy:0
+
+    //basket
+    basket: [],
+    totalBuy: 0,
+    handleAddToBasket: () => {}
 });
 
 export default OrderContext;

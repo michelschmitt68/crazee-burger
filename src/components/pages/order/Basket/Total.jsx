@@ -6,12 +6,13 @@ import OrderContext from "../../../../contexts/OrderContext";
 
 const Total = () => {
 
-  const {totalBuy} = useContext(OrderContext); 
+  const {totalBuy} = useContext(OrderContext);
+  console.log("total" ,totalBuy)
 
   return (
     <TotalStyled>
         <span>Total</span>
-        <span>{totalBuy.toFixed(2)} €</span>
+        <span>{totalBuy} €</span>
     </TotalStyled>
   )
 }

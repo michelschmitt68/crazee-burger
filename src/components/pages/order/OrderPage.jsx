@@ -19,7 +19,7 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
-  const {handleAddBuyList, handleDeleteBuyList, totalBuy} = useBasket(menus, handleMenus);
+  const { basket, totalBuy, handleAddToBasket } = useBasket();
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -56,9 +56,9 @@ const OrderPage = () => {
     isVisible,
     handleIsVisible,
     onDeselect,
-    handleAddBuyList,
-    handleDeleteBuyList,
-    totalBuy
+    basket,
+    totalBuy,
+    handleAddToBasket
   }
 
   return (
