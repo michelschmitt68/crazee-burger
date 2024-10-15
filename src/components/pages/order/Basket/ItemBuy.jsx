@@ -66,6 +66,9 @@ ItemBuy.propTypes = {
 
   ${({ $isSelected, $isChecked }) => $isSelected && $isChecked && `
     background-color: ${theme.colors.primary};
+    span{
+    color: ${theme.colors.white} !important;
+    }
   `}
 
 

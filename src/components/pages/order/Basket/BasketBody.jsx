@@ -24,13 +24,6 @@ const BasketBody = () => {
     handleDeleteBasketProduct(id)
   }
 
-  const handleOnSelect = (id) => {
-    const itemSelected = findObjectById(id, menus);
-    console.log("id", id)
-    console.log("itemSelected", itemSelected)
-    handleSelectItem(itemSelected);
-  }
-
   return (
     <BasketBodyStyled className="body">
       {hasItemsInBasket ? (
@@ -42,7 +35,7 @@ const BasketBody = () => {
                 key={menuProduct.id}
                 quantity={basketProduct.quantity}
                 onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                onClick={isChecked ? () => handleOnSelect(basketProduct.id) : null}
+                onClick={isChecked ? () => handleSelectItem(basketProduct.id) : null}
                 isSelected={(basketProduct.id === selectedItem.id)}
               />
             );
