@@ -2,19 +2,23 @@ import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import defaultImage from "/images/coming-soon.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import RedButton from "./RedButton";
+import OrderContext from "../../../../contexts/OrderContext";
 
 
-const ItemBuy = ({id, imageSource, title, price, quantity}) => {
+const ItemBuy = ({id, imageSource, title, price, quantity, isSelected, onClick}) => {
 
     const [isHovered, setIsHovered] = useState(false);
-    console.log("infos", id, imageSource, title, price, quantity)
+    const {isChecked} = useContext(OrderContext);
 
   return (
     <ItemBuyStyled
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        $isSelected={isSelected}
+        $isChecked={isChecked}
+        onClick={onClick}
     >
       <div className="image">
         <img 
@@ -43,7 +47,9 @@ ItemBuy.propTypes = {
     imageSource: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
-    quantity: PropTypes.number
+    quantity: PropTypes.number,
+    isSelected: PropTypes.bool,
+    onClick: PropTypes.func
   };
 
   const ItemBuyStyled = styled.div`
@@ -57,6 +63,10 @@ ItemBuy.propTypes = {
   align-items: center;
   gap: 16px;
   position: relative;
+
+  ${({ $isSelected, $isChecked }) => $isSelected && $isChecked && `
+    background-color: ${theme.colors.primary};
+  `}
 
 
   .image {

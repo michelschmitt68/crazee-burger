@@ -7,11 +7,29 @@ import { findObjectById } from "../../../../utils/arrays";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
 
-const BasketBody = ({ basket }) => {
+const BasketBody = () => {
 
-  const {menus} = useContext(OrderContext);
+  const {
+    basket,
+    isChecked,
+    handleDeleteBasketProduct,
+    menus,
+    handleSelectItem,
+    selectedItem
+  } = useContext(OrderContext)
   const hasItemsInBasket = basket.some((menu) => menu.quantity > 0);
-  console.log("basket:", basket)
+
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation()
+    handleDeleteBasketProduct(id)
+  }
+
+  const handleOnSelect = (id) => {
+    const itemSelected = findObjectById(id, menus);
+    console.log("id", id)
+    console.log("itemSelected", itemSelected)
+    handleSelectItem(itemSelected);
+  }
 
   return (
     <BasketBodyStyled className="body">
@@ -20,12 +38,12 @@ const BasketBody = ({ basket }) => {
           const menuProduct = findObjectById(basketProduct.id, menus);
             return (
               <ItemBuy
+                {...menuProduct}
                 key={menuProduct.id}
-                id={menuProduct.id}
-                title={menuProduct.title}
-                imageSource={menuProduct.imageSource}
-                price={menuProduct.price}
                 quantity={basketProduct.quantity}
+                onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                onClick={isChecked ? () => handleOnSelect(basketProduct.id) : null}
+                isSelected={(basketProduct.id === selectedItem.id)}
               />
             );
         })

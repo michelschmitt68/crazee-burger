@@ -12,7 +12,6 @@ const Item = ({ title, imageSource, price, onClickButton, onSelect, isSelected, 
   
   const { isChecked } = useContext(OrderContext);
 
-
   return (
     <ItemStyled className="produit" $isChecked={isChecked} $isSelected={isSelected} onClick={onSelect}>
       {isChecked && (

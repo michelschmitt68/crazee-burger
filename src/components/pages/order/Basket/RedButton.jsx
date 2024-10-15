@@ -8,10 +8,10 @@ import { PropTypes } from "prop-types";
 
 const RedButton = ({id}) => {
 
-    const { handleDeleteBuyList } = useContext(OrderContext);
+    const { handleDeleteBasketProduct } = useContext(OrderContext);
 
   return (
-    <RedButtonStyled onClick={() => handleDeleteBuyList(id)}>
+    <RedButtonStyled onClick={() => handleDeleteBasketProduct(id)}>
         <MdDeleteForever/>
     </RedButtonStyled>
   )

@@ -34,6 +34,7 @@ export const useMenus = () => {
     }
     const handleSelectItem = ( id, title, imageSource, price) => {
         const selected = { id, title, imageSource, price };
+        console.log("suite", selected)
         setSelectedItem(selected);
         setEditedProduct(selected);
         if (firstInputRef.current) {

@@ -3,10 +3,11 @@ import Item from "./Item";
 import { useContext } from "react";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
+import { findObjectById } from "../../../../utils/arrays";
 
 const Menu = () => {
 
-  const { menus, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket } = useContext(OrderContext);
+  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct } = useContext(OrderContext);
 
   const handleSelect = (id, title, imageSource, price) => {
     handleSelectItem(id, title, imageSource, price)
@@ -14,8 +15,16 @@ const Menu = () => {
     handleIsVisible(true);
   }
 
-  const handleAdd = ( id) => {
+  const handleAddOnBasket = (id) => {
     handleAddToBasket(id)
+  }
+
+  const onDelete = (id) => {
+    const isProductOnBasket = findObjectById(id, basket);
+    if (isProductOnBasket) {
+      handleDeleteBasketProduct(id);
+    }
+    handleDelete(id);
   }
   
 
@@ -28,9 +37,9 @@ const Menu = () => {
           title={title}
           imageSource={imageSource}
           price={price}
-          onClickButton={() => selectedItem && selectedItem.id === id ? onDeselect() : handleDelete(id)}
+          onClickButton={() => selectedItem && selectedItem.id === id ? onDeselect() : onDelete(id)}
           onSelect={() => handleSelect(id, title, imageSource, price)}
-          onAddToBasket={() => handleAdd(id)}
+          onAddToBasket={() => handleAddOnBasket(id)}
           isSelected={selectedItem.id === id}
         />
       ))}      

@@ -23,7 +23,6 @@ export const useBasket = () => {
   }
 
   const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket) => {
-    // we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
     const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const newBasket = [newBasketProduct, ...basketCopy]
     setBasket(newBasket)
