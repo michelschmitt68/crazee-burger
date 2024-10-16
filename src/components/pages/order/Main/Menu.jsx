@@ -15,8 +15,9 @@ const Menu = () => {
     handleIsVisible(true);
   }
 
-  const handleAddOnBasket = (id) => {
-    handleAddToBasket(id)
+  const handleAddOnBasket = (event, id) => {
+    event.stopPropagation();
+    handleAddToBasket(id);
   }
 
   const onDelete = (id) => {
@@ -39,7 +40,7 @@ const Menu = () => {
           price={price}
           onClickButton={() => selectedItem && selectedItem.id === id ? onDeselect() : onDelete(id)}
           onSelect={() => handleSelect(id, title, imageSource, price)}
-          onAddToBasket={() => handleAddOnBasket(id)}
+          onAddToBasket={(event) => handleAddOnBasket(event,id)}
           isSelected={selectedItem.id === id}
         />
       ))}      

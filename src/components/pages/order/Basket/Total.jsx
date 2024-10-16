@@ -2,17 +2,19 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
+import { calculateSumToPay } from "./Helper";
 
 
 const Total = () => {
 
-  const {totalBuy} = useContext(OrderContext);
-  console.log("total" ,totalBuy)
+  const {basket, menus} = useContext(OrderContext);
+  
+  const sumToPay = calculateSumToPay(basket, menus)
 
   return (
     <TotalStyled>
         <span>Total</span>
-        <span>{totalBuy} €</span>
+        <span>{sumToPay.toFixed(2)} €</span>
     </TotalStyled>
   )
 }
