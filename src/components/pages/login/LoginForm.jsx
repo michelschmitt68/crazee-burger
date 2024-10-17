@@ -6,6 +6,7 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import InputText from "../../reusableUI/InputText";
 import { BsPersonCircle } from "react-icons/bs";
 import ButtonPrimary from "../../reusableUI/ButtonPrimary";
+import { createUser } from "../../../api/user";
 
 export default function LoginForm() {
 
@@ -18,6 +19,7 @@ export default function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        createUser(inputValue);
         navigate(`/order/${inputValue}`);
         setInputValue("");
     };
