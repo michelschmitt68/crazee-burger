@@ -7,7 +7,7 @@ const OrderContext = React.createContext({
 
     // Menus
     menus: [],
-    setMenus: () => {},
+    handleMenus: () => {},
     resetMenus: () => {}, 
 
     // Select
@@ -31,11 +31,22 @@ const OrderContext = React.createContext({
 
     // Panel admin
     isVisible: false, 
-    setIsVisible: () => {},
+    handleIsVisible: () => {},
 
     // Tabs
     activeTab: "", 
-    setActiveTab: () => {}
+    handleActivTab: () => {},
+
+    // //Add on buyList
+    // handleAddBuyList: () => {},
+    // handleDeleteBuyList: () => {},
+    // totalBuy:0
+
+    //basket
+    basket: [],
+    totalBuy: 0,
+    handleAddToBasket: () => {},
+    handleDeleteBasketProduct: () => {}
 });
 
 export default OrderContext;

@@ -6,6 +6,7 @@ import AdminPanel from "../Admin/AdminPanel";
 import EmptyMenu from "./EmptyMenu";
 import { useContext } from "react";
 import OrderContext from '../../../../contexts/OrderContext';
+import Basket from "../Basket/Basket"
 
 
 
@@ -15,13 +16,16 @@ export default function Main() {
 
   return (
       <MainStyled className="main">
-        {/* <div className="basket"></div> */}
-        {menus.length === 0 ? (
-          <EmptyMenu />
-        ) : (
-          <Menu />
-        )}      
-        <AdminPanel/>
+        <Basket></Basket>
+
+        <div className="body">
+          {menus.length === 0 ? (
+            <EmptyMenu />
+          ) : (
+            <Menu />
+          )}      
+          <AdminPanel/>
+        </div>
       </MainStyled>
 
   )
@@ -36,10 +40,11 @@ const MainStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
 
   overflow-y: scroll;
-  /* .basket {
-    background: pink;
-  } */
+  .body{
+    position: relative;
+    height: 1109px;
+  }
 `

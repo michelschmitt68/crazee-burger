@@ -1,16 +1,19 @@
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../contexts/OrderContext";
 import { getInputTextConfig } from "./inputTextsConfig";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import AdminForm from "../AdminForm";
 import SubmitButton from "./SubmitButton";
+import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
 
 
 const AddProductPanel = () => {
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const{handleAdd, newProduct, setNewProduct} = useContext(OrderContext);
+
+    const{handleAdd, newProduct, setNewProduct, menus} = useContext(OrderContext);
+    const {isSubmitted, displaySuccessMessage} = useSuccessMessage();
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         const newValue = name === "price" ? parseFloat(value) || 0 : value;
@@ -23,12 +26,11 @@ const AddProductPanel = () => {
         event.preventDefault();
         const newProductToAdd = {
             ...newProduct,
-            id: crypto.randomUUID()
+            id: String(menus.length + 1)
         };
         handleAdd(newProductToAdd);
-        setIsSubmitted(true);
-        setTimeout(() => {setIsSubmitted(false)}, 2000);
         setNewProduct(EMPTY_PRODUCT);
+        displaySuccessMessage();
     }
 
     const inputTexts = getInputTextConfig(newProduct);

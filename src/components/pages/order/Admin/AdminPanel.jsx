@@ -15,7 +15,7 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const PanelAdmin = () => {
 
-  const { isChecked, selectedItem, activeTab, setActiveTab, isVisible, setIsVisible } = useContext(AdminContext);
+  const { isChecked, selectedItem, activeTab, handleActiveTab, isVisible, handleIsVisible } = useContext(AdminContext);
     
 
 if (!isChecked) return null;
@@ -26,7 +26,7 @@ if (!isChecked) return null;
         <AdminTab
           key={"toggle"}
           Icon={!isVisible ? <FiChevronUp className="icon" /> : <FiChevronDown />}
-          onClick={() => setIsVisible(!isVisible)}
+          onClick={() => handleIsVisible(!isVisible)}
           className={isVisible ? "tab-select" : ""}
         />
 
@@ -36,8 +36,8 @@ if (!isChecked) return null;
             Icon={tab.Icon}
             inputValue={tab.inputValue}
             onClick={ () => {
-              setActiveTab(tab.id);
-              setIsVisible(true);
+              handleActiveTab(tab.id);
+              handleIsVisible(true);
               }
             }
             className= {activeTab === tab.id ? "tab-select" : ""}
@@ -61,9 +61,11 @@ export default PanelAdmin;
 
 const PanelAdminStyled = styled.div`
   display: flex;
-  position: fixed;
-  bottom: 32px;
-  width: 1400px;
+  position: sticky;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -84,8 +86,6 @@ const PanelAdminStyled = styled.div`
     border: 1px solid ${theme.colors.greyLight};
     padding: 30px 70px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
 }
     
     
