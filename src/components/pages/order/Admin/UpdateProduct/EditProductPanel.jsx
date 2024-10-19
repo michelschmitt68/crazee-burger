@@ -4,10 +4,11 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
 import AdminForm from "../AdminForm";
+import { updateMenu } from "../../../../../api/user";
 
 
 const EditProductPanel = () => {
-    const { editedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
+    const { username, menus, editedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
     const inputTexts = getInputTextConfig(editedProduct);
 
     const handleChange = (event) => {
@@ -18,6 +19,7 @@ const EditProductPanel = () => {
         [name]: newValue,
       };
     handleEdit(updatedProduct);
+    updateMenu(username, menus);
     };
 
   return (

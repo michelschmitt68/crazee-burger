@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { fakeMenu2 } from "../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { findObjectById } from "../utils/arrays";
+import { updateMenu } from "../api/user";
 
 
 export const useMenus = () => {
@@ -24,7 +25,7 @@ export const useMenus = () => {
           )
         );
         setSelectedItem(updatedItem);
-        setEditedProduct(updatedItem)
+        setEditedProduct(updatedItem);
     }
     const resetMenus = () => {
         setMenus(fakeMenu2);

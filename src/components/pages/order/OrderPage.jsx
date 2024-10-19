@@ -10,6 +10,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenus } from "../../../hooks/useMenus";
 import { useAdminPanel } from "../../../hooks/useAdminPanel";
 import { useBasket } from "../../../hooks/useBasket";
+import { useParams } from "react-router-dom";
 
 
 
@@ -20,7 +21,7 @@ const OrderPage = () => {
   const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
   const { basket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
-
+  const { username } = useParams();
   const handleToggle = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
@@ -38,6 +39,7 @@ const OrderPage = () => {
   };
 
   const orderContextValue = {
+    username,
     isChecked, 
     handleToggle, 
     menus,
