@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { fakeMenu2 } from "../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { findObjectById } from "../utils/arrays";
-import { updateMenu } from "../api/user";
 
 
 export const useMenus = () => {
@@ -36,14 +35,12 @@ export const useMenus = () => {
     }
     const handleSelectItem = (id) => {
         const itemSelected = findObjectById(id, menus)
-        console.log("suite", itemSelected)
         setSelectedItem(itemSelected);
         setEditedProduct(itemSelected);
         if (firstInputRef.current) {
           firstInputRef.current.focus();
         }
     }
-
     const handleMenus = (menus) => {
         setMenus(menus);
     }

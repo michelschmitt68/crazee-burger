@@ -28,8 +28,4 @@ export const authenticateUser = async (userId) => {
     }
 }
 
-export const updateMenu = async(userId, newMenu) => {
-    const docRef = doc(db, "users", userId);
-    setDoc(docRef, { menu: newMenu }, { merge: true });
-}
 

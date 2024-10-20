@@ -16,7 +16,6 @@ export default function LoginForm() {
     const handleChange = (event) => {
         setUsername(event.target.value); 
     };
-
     const handleSubmit = async(event) => {
         event.preventDefault();
         authenticateUser(username);

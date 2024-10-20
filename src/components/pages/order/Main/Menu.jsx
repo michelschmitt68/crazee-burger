@@ -4,10 +4,11 @@ import { useContext } from "react";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
 import { findObjectById } from "../../../../utils/arrays";
+import { updateMenu } from "../../../../api/product";
 
 const Menu = () => {
 
-  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct } = useContext(OrderContext);
+  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct, username } = useContext(OrderContext);
 
   const handleSelect = (id, title, imageSource, price) => {
     handleSelectItem(id, title, imageSource, price)
@@ -26,6 +27,7 @@ const Menu = () => {
       handleDeleteBasketProduct(id);
     }
     handleDelete(id);
+    updateMenu(username, menus);
   }
   
 

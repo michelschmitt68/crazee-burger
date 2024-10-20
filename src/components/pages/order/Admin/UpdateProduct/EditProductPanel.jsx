@@ -4,7 +4,7 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
 import AdminForm from "../AdminForm";
-import { updateMenu } from "../../../../../api/user";
+import { updateMenu } from "../../../../../api/product";
 
 
 const EditProductPanel = () => {

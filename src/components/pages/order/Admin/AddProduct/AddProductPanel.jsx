@@ -6,12 +6,13 @@ import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import AdminForm from "../AdminForm";
 import SubmitButton from "./SubmitButton";
 import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
+import { updateMenu } from "../../../../../api/product";
 
 
 const AddProductPanel = () => {
 
 
-    const{handleAdd, newProduct, setNewProduct, menus} = useContext(OrderContext);
+    const{handleAdd, newProduct, setNewProduct, menus, username} = useContext(OrderContext);
     const {isSubmitted, displaySuccessMessage} = useSuccessMessage();
 
     const handleChange = (event) => {
@@ -29,6 +30,7 @@ const AddProductPanel = () => {
             id: String(menus.length + 1)
         };
         handleAdd(newProductToAdd);
+        updateMenu(username, menus);
         setNewProduct(EMPTY_PRODUCT);
         displaySuccessMessage();
     }
