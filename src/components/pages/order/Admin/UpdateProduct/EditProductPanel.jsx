@@ -4,11 +4,10 @@ import OrderContext from "../../../../../contexts/OrderContext";
 import { useContext } from "react";
 import InfoMessage from "../../../../reusableUI/InfoMessage";
 import AdminForm from "../AdminForm";
-import { updateMenu } from "../../../../../api/product";
 
 
 const EditProductPanel = () => {
-    const { username, menus, editedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
+    const { username, editedProduct, handleEdit, firstInputRef } = useContext(OrderContext);
     const inputTexts = getInputTextConfig(editedProduct);
 
     const handleChange = (event) => {

@@ -12,13 +12,13 @@ export const getUser = async (idUser) => {
     }
 }
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
     const docRef = doc(db, "users", userId);
     const newDoc = {
         username: userId,
         menu: fakeMenu2
     }
-    setDoc(docRef, newDoc);
+    await setDoc(docRef, newDoc);
 }
 
 export const authenticateUser = async (userId) => {

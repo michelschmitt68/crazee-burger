@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
 import { findObjectById } from "../../../../utils/arrays";
-import { updateMenu } from "../../../../api/product";
+
 
 const Menu = () => {
 
@@ -27,6 +27,10 @@ const Menu = () => {
       handleDeleteBasketProduct(id);
     }
     handleDelete(id, username);
+  }
+
+  if (menus === undefined) {
+    return <span>Chargement</span>
   }
   
 
