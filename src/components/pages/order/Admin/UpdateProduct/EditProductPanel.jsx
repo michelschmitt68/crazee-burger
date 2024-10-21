@@ -18,8 +18,7 @@ const EditProductPanel = () => {
         ...editedProduct,
         [name]: newValue,
       };
-    handleEdit(updatedProduct);
-    updateMenu(username, menus);
+    handleEdit(updatedProduct, username);
     };
 
   return (

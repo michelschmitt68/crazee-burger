@@ -26,8 +26,7 @@ const Menu = () => {
     if (isProductOnBasket) {
       handleDeleteBasketProduct(id);
     }
-    handleDelete(id);
-    updateMenu(username, menus);
+    handleDelete(id, username);
   }
   
 

@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
@@ -11,6 +11,7 @@ import { useMenus } from "../../../hooks/useMenus";
 import { useAdminPanel } from "../../../hooks/useAdminPanel";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product";
 
 
 
@@ -22,6 +23,7 @@ const OrderPage = () => {
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
   const { basket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
   const { username } = useParams();
+
   const handleToggle = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
@@ -37,6 +39,17 @@ const OrderPage = () => {
       });
     }
   };
+
+  const initialiseMenu = async () => {
+    const menuReceived = await getMenu(username);
+    handleMenus(menuReceived);
+  }
+
+  useEffect(() => {
+      initialiseMenu();
+  }, []);
+
+  
 
   const orderContextValue = {
     username,

@@ -6,11 +6,9 @@ import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import AdminForm from "../AdminForm";
 import SubmitButton from "./SubmitButton";
 import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
-import { updateMenu } from "../../../../../api/product";
 
 
 const AddProductPanel = () => {
-
 
     const{handleAdd, newProduct, setNewProduct, menus, username} = useContext(OrderContext);
     const {isSubmitted, displaySuccessMessage} = useSuccessMessage();
@@ -27,10 +25,9 @@ const AddProductPanel = () => {
         event.preventDefault();
         const newProductToAdd = {
             ...newProduct,
-            id: String(menus.length + 1)
+            id: crypto.randomUUID(),
         };
-        handleAdd(newProductToAdd);
-        updateMenu(username, menus);
+        handleAdd(newProductToAdd, username);
         setNewProduct(EMPTY_PRODUCT);
         displaySuccessMessage();
     }
