@@ -4,7 +4,7 @@ import { theme } from '../../theme';
 import  { forwardRef } from 'react';
 
 
-const InputText = forwardRef(({ type, required, inputValue, onChange, placeholder, Icon, className, name, version }, ref) => {
+const InputText = forwardRef(({ type, required, inputValue, onChange, placeholder, Icon, className, name, version, onFocus, onBlur }, ref) => {
 
   return (
     <InputStyled className={className} version={version}>
@@ -15,6 +15,8 @@ const InputText = forwardRef(({ type, required, inputValue, onChange, placeholde
         name={name}
         value={inputValue}
         onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
         placeholder={placeholder}
         ref={ref}
       />
@@ -33,7 +35,9 @@ InputText.propTypes = {
   Icon: PropTypes.element,
   className: PropTypes.string,
   name: PropTypes.string,
-  version: PropTypes.string         
+  version: PropTypes.string,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,     
 };
 
 export default InputText;

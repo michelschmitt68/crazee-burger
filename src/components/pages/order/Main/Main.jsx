@@ -13,7 +13,7 @@ import Basket from "../Basket/Basket"
 export default function Main() {
 
   const {menus} = useContext(OrderContext);
-  console.log("empty", menus)
+
   return (
       <MainStyled className="main">
         <Basket></Basket>
