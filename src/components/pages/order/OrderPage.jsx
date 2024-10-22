@@ -13,6 +13,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product";
 import { authenticateUser } from "../../../api/user";
+import { getLocalStorage } from "../../../utils/window";
 
 
 
@@ -22,7 +23,7 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
-  const { basket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, handleBasket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
   const { username } = useParams();
 
   const handleToggle = () => {
@@ -42,15 +43,24 @@ const OrderPage = () => {
   };
 
   const initialiseMenu = async () => {
-
     await authenticateUser(username);
     const menuReceived = await getMenu(username);
     if (menuReceived) {handleMenus(menuReceived);}
-}
+  }
 
-useEffect(() => {
-    initialiseMenu();
-}, [username]);
+  const initialiseBasket = () => {
+    const basketReceived = getLocalStorage(username);
+    if(basketReceived)
+    handleBasket(basketReceived);
+  }
+
+  useEffect(() => {
+      initialiseMenu();
+  }, [username]);
+
+  useEffect(() => {
+    initialiseBasket();
+  }, [username]);
 
   
 

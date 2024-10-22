@@ -48,6 +48,7 @@ const OrderContext = React.createContext({
 
     //basket
     basket: [],
+    handleBasket: () => {},
     totalBuy: 0,
     handleAddToBasket: () => {},
     handleDeleteBasketProduct: () => {}
