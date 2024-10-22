@@ -18,7 +18,7 @@ const Menu = () => {
 
   const handleAddOnBasket = (event, id) => {
     event.stopPropagation();
-    handleAddToBasket(id);
+    handleAddToBasket(id, username);
   }
 
   const onDelete = (id) => {
