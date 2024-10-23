@@ -10,8 +10,7 @@ import { useSuccessMessage } from "../../../../../hooks/useSuccessMessage";
 
 const AddProductPanel = () => {
 
-
-    const{handleAdd, newProduct, setNewProduct, menus} = useContext(OrderContext);
+    const{handleAdd, newProduct, setNewProduct, menus, username} = useContext(OrderContext);
     const {isSubmitted, displaySuccessMessage} = useSuccessMessage();
 
     const handleChange = (event) => {
@@ -26,9 +25,9 @@ const AddProductPanel = () => {
         event.preventDefault();
         const newProductToAdd = {
             ...newProduct,
-            id: String(menus.length + 1)
+            id: crypto.randomUUID(),
         };
-        handleAdd(newProductToAdd);
+        handleAdd(newProductToAdd, username);
         setNewProduct(EMPTY_PRODUCT);
         displaySuccessMessage();
     }

@@ -7,7 +7,7 @@ import RedButton from "./RedButton";
 import OrderContext from "../../../../contexts/OrderContext";
 
 
-const ItemBuy = ({id, imageSource, title, price, quantity, isSelected, onClick}) => {
+const ItemBuy = ({ imageSource, title, price, quantity, isSelected, onClick, onDelete}) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const {isChecked} = useContext(OrderContext);
@@ -31,7 +31,7 @@ const ItemBuy = ({id, imageSource, title, price, quantity, isSelected, onClick})
         <span>{price.toFixed(2)} €</span>
       </div>
       {isHovered ? (
-        <RedButton id={id}/>
+        <RedButton onDelete={onDelete}/>
         ) : (
         <span>X {quantity}</span>
         ) 
@@ -49,7 +49,8 @@ ItemBuy.propTypes = {
     price: PropTypes.number,
     quantity: PropTypes.number,
     isSelected: PropTypes.bool,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    onDelete: PropTypes.func
   };
 
   const ItemBuyStyled = styled.div`

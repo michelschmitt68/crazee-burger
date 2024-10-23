@@ -7,7 +7,6 @@ export const useAdminPanel = () => {
 
     const handleIsVisible = (isVisible) => {
         setIsVisible(isVisible)
-        console.log(isVisible)
     }
 
     const handleActiveTab = (activeTab) => {

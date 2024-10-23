@@ -1,6 +1,10 @@
 import React from 'react';
 
 const OrderContext = React.createContext({
+
+    //userId
+    username: "",
+    
     // Toggle admin
     isChecked: false,
     handleToggle: () => {},
@@ -44,6 +48,7 @@ const OrderContext = React.createContext({
 
     //basket
     basket: [],
+    handleBasket: () => {},
     totalBuy: 0,
     handleAddToBasket: () => {},
     handleDeleteBasketProduct: () => {}

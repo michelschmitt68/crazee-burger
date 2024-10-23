@@ -15,13 +15,15 @@ const BasketBody = () => {
     handleDeleteBasketProduct,
     menus,
     handleSelectItem,
-    selectedItem
+    selectedItem,
+    username
   } = useContext(OrderContext)
+  
   const hasItemsInBasket = basket.some((menu) => menu.quantity > 0);
 
   const handleOnDelete = (event, id) => {
     event.stopPropagation()
-    handleDeleteBasketProduct(id)
+    handleDeleteBasketProduct(id, username)
   }
 
   return (

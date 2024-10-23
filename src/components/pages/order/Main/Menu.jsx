@@ -5,9 +5,10 @@ import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
 import { findObjectById } from "../../../../utils/arrays";
 
+
 const Menu = () => {
 
-  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct } = useContext(OrderContext);
+  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct, username } = useContext(OrderContext);
 
   const handleSelect = (id, title, imageSource, price) => {
     handleSelectItem(id, title, imageSource, price)
@@ -17,15 +18,19 @@ const Menu = () => {
 
   const handleAddOnBasket = (event, id) => {
     event.stopPropagation();
-    handleAddToBasket(id);
+    handleAddToBasket(id, username);
   }
 
   const onDelete = (id) => {
     const isProductOnBasket = findObjectById(id, basket);
     if (isProductOnBasket) {
-      handleDeleteBasketProduct(id);
+      handleDeleteBasketProduct(id, username);
     }
-    handleDelete(id);
+    handleDelete(id, username);
+  }
+
+  if (menus === undefined) {
+    return <span>Chargement</span>
   }
   
 

@@ -3,13 +3,17 @@ import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast} from 'react-toastify';
 import OrderContext from "../../../contexts/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenus } from "../../../hooks/useMenus";
 import { useAdminPanel } from "../../../hooks/useAdminPanel";
 import { useBasket } from "../../../hooks/useBasket";
+import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product";
+import { authenticateUser } from "../../../api/user";
+import { getLocalStorage } from "../../../utils/window";
 
 
 
@@ -19,7 +23,8 @@ const OrderPage = () => {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const {menus, handleMenus, handleDelete, handleAdd, handleEdit, resetMenus, onDeselect, handleSelectItem, selectedItem, editedProduct} = useMenus();
   const{activeTab, isVisible, handleIsVisible, handleActiveTab} = useAdminPanel();
-  const { basket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, handleBasket, totalBuy, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { username } = useParams();
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -37,7 +42,30 @@ const OrderPage = () => {
     }
   };
 
+  const initialiseMenu = async () => {
+    await authenticateUser(username);
+    const menuReceived = await getMenu(username);
+    if (menuReceived) {handleMenus(menuReceived);}
+  }
+
+  const initialiseBasket = () => {
+    const basketReceived = getLocalStorage(username);
+    if(basketReceived)
+    handleBasket(basketReceived);
+  }
+
+  useEffect(() => {
+      initialiseMenu();
+  }, [username]);
+
+  useEffect(() => {
+    initialiseBasket();
+  }, [username]);
+
+  
+
   const orderContextValue = {
+    username,
     isChecked, 
     handleToggle, 
     menus,

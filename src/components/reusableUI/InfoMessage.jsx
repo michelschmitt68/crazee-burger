@@ -14,7 +14,7 @@ const InfoMessage = ({ icon, label, type }) => {
 InfoMessage.propTypes = {
   icon: PropTypes.element,
   label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["success", "alert"]),
+  type: PropTypes.oneOf(["success", "alert", "update"]),
 };
 
 export default InfoMessage;
@@ -23,9 +23,18 @@ const InfoMessageStyled = styled.div`
   display: flex;
   align-items: center; 
   vertical-align: middle; 
-  color: ${(props) =>
-    props.type === "alert" ? theme.colors.orangeHighlight : 
-    props.type === "success" ? theme.colors.success : theme.colors.default}; 
+  color: ${(props) => {
+    switch (props.type) {
+      case "alert":
+        return theme.colors.orangeHighlight;
+      case "success":
+        return theme.colors.success;
+      case "update":
+        return theme.colors.blue;
+      default:
+        return theme.colors.default;
+    }
+  }};
   gap: 5px;
 
   span {     
