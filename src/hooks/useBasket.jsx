@@ -36,7 +36,6 @@ export const useBasket = () => {
 
   const handleDeleteBasketProduct = (idBasketProduct, username) => {
     const basketUpdated = removeObjectById(idBasketProduct, basket);
-    console.log("basket updated: ", basketUpdated)
     setBasket(basketUpdated);
     setLocalStorage(username, basketUpdated);
   }

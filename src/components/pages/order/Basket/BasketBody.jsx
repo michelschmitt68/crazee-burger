@@ -23,7 +23,6 @@ const BasketBody = () => {
 
   const handleOnDelete = (event, id) => {
     event.stopPropagation()
-    console.log("username : ", username)
     handleDeleteBasketProduct(id, username)
   }
 
