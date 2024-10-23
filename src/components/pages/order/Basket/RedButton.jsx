@@ -2,16 +2,12 @@
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
 import { MdDeleteForever } from 'react-icons/md';
-import OrderContext from '../../../../contexts/OrderContext';
-import { useContext } from 'react';
 import { PropTypes } from "prop-types";
 
-const RedButton = ({id}) => {
-
-    const { handleDeleteBasketProduct } = useContext(OrderContext);
+const RedButton = ({onDelete}) => {
 
   return (
-    <RedButtonStyled onClick={() => handleDeleteBasketProduct(id)}>
+    <RedButtonStyled onClick={onDelete}>
         <MdDeleteForever/>
     </RedButtonStyled>
   )
@@ -20,7 +16,8 @@ const RedButton = ({id}) => {
 export default RedButton
 
 RedButton.propTypes = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    onDelete: PropTypes.func
   };
 
 const RedButtonStyled = styled.div`

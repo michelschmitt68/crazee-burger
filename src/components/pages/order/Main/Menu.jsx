@@ -24,7 +24,7 @@ const Menu = () => {
   const onDelete = (id) => {
     const isProductOnBasket = findObjectById(id, basket);
     if (isProductOnBasket) {
-      handleDeleteBasketProduct(id);
+      handleDeleteBasketProduct(id, username);
     }
     handleDelete(id, username);
   }
