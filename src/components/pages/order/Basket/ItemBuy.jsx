@@ -72,6 +72,14 @@ ItemBuy.propTypes = {
     }
   `}
 
+  ${({ $isChecked }) =>
+    $isChecked && `
+      &:hover {
+        box-shadow: ${theme.shadows.light} ${theme.colors.orangeHighlight};
+        cursor: pointer;
+      }
+    `}
+
 
   .image {
     height: 100%;
