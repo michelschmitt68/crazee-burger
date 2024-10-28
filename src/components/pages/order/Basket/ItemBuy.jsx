@@ -35,7 +35,7 @@ const ItemBuy = ({ imageSource, title, price, quantity, isSelected, onClick, onD
         <RedButton onDelete={onDelete}/>
         ) : (
           <span>X
-            <CasinoEffect quantity={quantity}/>
+            <CasinoEffect quantity={quantity} version="minimalist"/>
           </span>
         ) 
     }
