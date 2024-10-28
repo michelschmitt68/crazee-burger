@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { findObjectById } from "../../../../utils/arrays";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/OrderContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 const BasketBody = () => {
 
@@ -29,19 +30,29 @@ const BasketBody = () => {
   return (
     <BasketBodyStyled className="body">
       {hasItemsInBasket ? (
-        basket.map((basketProduct) => {
-          const menuProduct = findObjectById(basketProduct.id, menus);
+        <AnimatePresence >
+          {basket.map((basketProduct) => {
+            const menuProduct = findObjectById(basketProduct.id, menus);
+            
             return (
-              <ItemBuy
-                {...menuProduct}
-                key={menuProduct.id}
-                quantity={basketProduct.quantity}
-                onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                onClick={isChecked ? () => handleSelectItem(basketProduct.id) : null}
-                isSelected={(basketProduct.id === selectedItem.id)}
-              />
+              <MotionItem
+                key={basketProduct.id}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, exit: {duration: 0.3} }}
+              >
+                <ItemBuy
+                  {...menuProduct}
+                  quantity={basketProduct.quantity}
+                  onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                  onClick={isChecked ? () => handleSelectItem(basketProduct.id) : null}
+                  isSelected={basketProduct.id === selectedItem.id}
+                />
+              </MotionItem>
             );
-        })
+          })}
+        </AnimatePresence>
       ) : (
         <EmptyCommande />
       )}
@@ -65,4 +76,10 @@ const BasketBodyStyled = styled.div`
   gap: 20px;
   max-height: 969px;
   overflow-y: scroll;
+`;
+
+const MotionItem = styled(motion.div)`
+  width: 100%; /* Match the width of ItemBuy */
+  display: flex;
+  justify-content: center;
 `;

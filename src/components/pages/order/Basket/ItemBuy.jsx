@@ -5,6 +5,7 @@ import defaultImage from "/images/coming-soon.png";
 import { useContext, useState } from "react";
 import RedButton from "./RedButton";
 import OrderContext from "../../../../contexts/OrderContext";
+import CasinoEffect from "../../../reusableUI/CasinoEffect";
 
 
 const ItemBuy = ({ imageSource, title, price, quantity, isSelected, onClick, onDelete}) => {
@@ -33,7 +34,9 @@ const ItemBuy = ({ imageSource, title, price, quantity, isSelected, onClick, onD
       {isHovered ? (
         <RedButton onDelete={onDelete}/>
         ) : (
-        <span>X {quantity}</span>
+          <span>X
+            <CasinoEffect quantity={quantity}/>
+          </span>
         ) 
     }
     </ItemBuyStyled>
@@ -111,6 +114,7 @@ ItemBuy.propTypes = {
         font-weight: ${theme.weights.regular};
         color: ${theme.colors.primary};
         text-align: left;
-
+        display: inline-flex;
+        gap: ${theme.spacing.xs};
     }
 `;
