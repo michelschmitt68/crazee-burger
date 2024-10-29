@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import ItemBuy from "./ItemBuy";
 import EmptyCommande from "./EmptyCommande";
@@ -33,13 +32,13 @@ const BasketBody = () => {
         <AnimatePresence >
           {basket.map((basketProduct) => {
             const menuProduct = findObjectById(basketProduct.id, menus);
-            
+            console.log("basketProduct", basketProduct.id)          
             return (
               <MotionItem
                 key={basketProduct.id}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
+                exit={{ opacity: 0, x: -100, display:"none" }}
                 transition={{ duration: 0.5, exit: {duration: 0.3} }}
               >
                 <ItemBuy
@@ -79,7 +78,7 @@ const BasketBodyStyled = styled.div`
 `;
 
 const MotionItem = styled(motion.div)`
-  width: 100%; /* Match the width of ItemBuy */
+  width: 100%;
   display: flex;
   justify-content: center;
 `;

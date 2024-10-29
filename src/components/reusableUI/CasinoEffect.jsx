@@ -27,8 +27,6 @@ CasinoEffect.propTypes = {
 };
 
 const QuantityContainer = styled(motion.div)`
-
-
   ${({ version }) => {
     if (version === "minimalist") {
       return css`

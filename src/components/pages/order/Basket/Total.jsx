@@ -11,12 +11,12 @@ const Total = () => {
   const {basket, menus} = useContext(OrderContext);
   
   const sumToPay = calculateSumToPay(basket, menus)
-
+  
   return (
     <TotalStyled>
         <span>Total</span>      
         <span>
-          <CasinoEffect quantity={sumToPay.toFixed(2)} version="medium" />
+          <CasinoEffect quantity={parseFloat(sumToPay.toFixed(2))} version="medium" />
           €
         </span>
     </TotalStyled>
