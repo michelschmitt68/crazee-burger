@@ -3,7 +3,7 @@ import { theme } from "../../../../theme";
 import AdminTab from "./AdminTab/AdminTab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useContext } from "react";
-import { motion } from "framer-motion"; // Importer motion
+import { motion } from "framer-motion";
 import AdminContext from "../../../../contexts/OrderContext";
 import AddProductPanel from "./AddProduct/AddProductPanel";
 import tabsConfig from "./AdminTab/tabsConfig";
@@ -16,11 +16,9 @@ const PanelAdmin = () => {
 
   if (!isChecked) return null;
 
-  // Définir les variantes d'animation
   const descriptionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    exit: { opacity: 0, y: 20, transition: { duration: 0.5 } },
+    hidden: { height: "0px", opacity: 0, overflow: "hidden", display: "none", transition: { duration: 0.2 } },
+    visible: { height: "250px", opacity: 1, overflow: "visible", display: "block", transition: { duration: 1 } },
   };
 
   return (
@@ -45,20 +43,17 @@ const PanelAdmin = () => {
           />
         ))}
       </div>
-      {isVisible && (
-        <motion.div
-          className="description"
-          variants={descriptionVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          {activeTab === "addProduct" && <AddProductPanel />}
-          {activeTab === "editProduct" && (
-            selectedItem === EMPTY_PRODUCT ? <DefaultEditProduct /> : <EditProductPanel selectedItem={selectedItem} />
-          )}
-        </motion.div>
-      )}
+      <motion.div
+        className="description"
+        variants={descriptionVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+      >
+        {activeTab === "addProduct" && <AddProductPanel />}
+        {activeTab === "editProduct" && (
+          selectedItem === EMPTY_PRODUCT ? <DefaultEditProduct /> : <EditProductPanel selectedItem={selectedItem} />
+        )}
+      </motion.div>
     </PanelAdminStyled>
   );
 };
@@ -78,17 +73,18 @@ const PanelAdminStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
   .onglets {
-    margin-left: 5vh;
+    margin-left: ${theme.spacing.xxl};
+    background-color: ${theme.colors.background};
     display: inline-flex;
     align-items: center;
-    gap: 1px;
+    position: sticky;
+    z-index: 2;
   }
 
   .description {
-    height: 250px;
     background-color: white;
     border: 1px solid ${theme.colors.greyLight};
     padding: 30px 70px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  }
-`;
+    overflow: hidden;
+  }`;
