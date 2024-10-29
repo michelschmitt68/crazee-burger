@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
 import { findObjectById } from "../../../../utils/arrays";
-import { motion, AnimatePresence } from "framer-motion"; // Importer AnimatePresence et motion
+import { motion, AnimatePresence } from "framer-motion";
 
 const Menu = () => {
   const {
@@ -50,10 +50,10 @@ const Menu = () => {
         {menus.map(({ id, title, imageSource, price }) => (
           <motion.div
             key={id}
-            initial={{ opacity: 0, scale: 0.9 }} // État initial
-            animate={{ opacity: 1, scale: 1 }} // État d'animation
-            exit={{ opacity: 0, scale: 0.9 }} // État de sortie
-            transition={{ duration: 0.3 }} // Durée de la transition
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
           >
             <Item
               id={id}
