@@ -107,6 +107,7 @@ const ItemStyled = styled.div`
           color: ${theme.colors.white} !important; 
         }
       }
+
     `}
 
   .image {

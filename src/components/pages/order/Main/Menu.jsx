@@ -4,22 +4,33 @@ import { useContext } from "react";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../contexts/OrderContext";
 import { findObjectById } from "../../../../utils/arrays";
-
+import { motion, AnimatePresence } from "framer-motion"; // Importer AnimatePresence et motion
 
 const Menu = () => {
-
-  const { menus, basket, handleDelete, handleSelectItem, selectedItem, onDeselect, handleActiveTab, handleIsVisible, handleAddToBasket, handleDeleteBasketProduct, username } = useContext(OrderContext);
+  const {
+    menus,
+    basket,
+    handleDelete,
+    handleSelectItem,
+    selectedItem,
+    onDeselect,
+    handleActiveTab,
+    handleIsVisible,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
+    username,
+  } = useContext(OrderContext);
 
   const handleSelect = (id, title, imageSource, price) => {
-    handleSelectItem(id, title, imageSource, price)
+    handleSelectItem(id, title, imageSource, price);
     handleActiveTab("editProduct");
     handleIsVisible(true);
-  }
+  };
 
   const handleAddOnBasket = (event, id) => {
     event.stopPropagation();
     handleAddToBasket(id, username);
-  }
+  };
 
   const onDelete = (id) => {
     const isProductOnBasket = findObjectById(id, basket);
@@ -27,28 +38,40 @@ const Menu = () => {
       handleDeleteBasketProduct(id, username);
     }
     handleDelete(id, username);
-  }
+  };
 
   if (menus === undefined) {
-    return <span>Chargement</span>
+    return <span>Chargement</span>;
   }
-  
 
   return (
     <MenuStyled className="menu">
-      {menus.map(({ id, title, imageSource, price }) => (
-        <Item 
-          key={id}
-          id={id}
-          title={title}
-          imageSource={imageSource}
-          price={price}
-          onClickButton={() => selectedItem && selectedItem.id === id ? onDeselect() : onDelete(id)}
-          onSelect={() => handleSelect(id, title, imageSource, price)}
-          onAddToBasket={(event) => handleAddOnBasket(event,id)}
-          isSelected={selectedItem.id === id}
-        />
-      ))}      
+      <AnimatePresence>
+        {menus.map(({ id, title, imageSource, price }) => (
+          <motion.div
+            key={id}
+            initial={{ opacity: 0, scale: 0.9 }} // État initial
+            animate={{ opacity: 1, scale: 1 }} // État d'animation
+            exit={{ opacity: 0, scale: 0.9 }} // État de sortie
+            transition={{ duration: 0.3 }} // Durée de la transition
+          >
+            <Item
+              id={id}
+              title={title}
+              imageSource={imageSource}
+              price={price}
+              onClickButton={() =>
+                selectedItem && selectedItem.id === id
+                  ? onDeselect()
+                  : onDelete(id)
+              }
+              onSelect={() => handleSelect(id, title, imageSource, price)}
+              onAddToBasket={(event) => handleAddOnBasket(event, id)}
+              isSelected={selectedItem.id === id}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </MenuStyled>
   );
 };
