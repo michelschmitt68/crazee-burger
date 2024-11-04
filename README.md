@@ -27,3 +27,4 @@ Firebase : Utilisé comme base de données et pour la gestion des authentificati
 Vite : Outil de construction et de développement rapide pour les applications modernes.
 ESLint : Outil d'analyse statique pour identifier et corriger les problèmes dans le code JavaScript.
 Git : Gestionnaire de versions utilisé pour suivre les modifications du code.
+Figma : Utilisé pour intégrer les maquettes fournies dans le développement de l'interface utilisateur.
