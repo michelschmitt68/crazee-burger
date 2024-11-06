@@ -59,6 +59,7 @@ if (!isChecked) return null;
 
 export default PanelAdmin;
 
+
 const PanelAdminStyled = styled.div`
   display: flex;
   position: sticky;
@@ -86,8 +87,5 @@ const PanelAdminStyled = styled.div`
     border: 1px solid ${theme.colors.greyLight};
     padding: 30px 70px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-    
-    
-  
+} 
 `;

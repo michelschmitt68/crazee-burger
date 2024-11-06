@@ -109,6 +109,7 @@ const minimalist = css`
     cursor: pointer;
     &:hover:not(:disabled) {
       border: none;
+      color: ${theme.colors.red};
     }
     .icon {
       width: 100%;

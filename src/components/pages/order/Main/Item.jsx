@@ -87,6 +87,7 @@ const ItemStyled = styled.div`
       &:hover {
         transform: scale(1.05);
         box-shadow: ${theme.shadows.light} ${theme.colors.orangeHighlight};
+        cursor: pointer;
       }
 
       &:active, &:focus {
@@ -106,6 +107,7 @@ const ItemStyled = styled.div`
           color: ${theme.colors.white} !important; 
         }
       }
+
     `}
 
   .image {
